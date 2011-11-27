@@ -1,0 +1,34 @@
+# Build products
+*.o
+*.a
+
+# TeX products
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+
+# Temporary editor files
+*~
+*.swp
+\#*\#
+.\#*
+.DS_Store*
+Thumbs.db
+Icon?
+
+# Compressed packages
+*.gz
+*.dmg
+*.7z
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Untracked Projects
+# Don't use .gitignore to keep a dir from local dir from being tracked. Put it into
+#   .git/info/exclude

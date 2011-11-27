@@ -1,0 +1,15 @@
+Executing Python Scripts
+Brett Deaton 5.18.10
+
+*** Running a script directly ***
+--> Run python with the file foo.py as an argument
+python <foo.py>
+--> Or within IDLE you can run and edit a python script beautifully.
+
+*** Generating an executable from a python script ***
+--> I don't know how to do this yet
+
+*** Making the script executable by calling it by name at the command line
+--> Insert hashbang '#!' at the very beginning of the script, followed by
+    the absolute path to the interpreter: '/opt/local/bin/python'. That is:
+#!/opt/local/bin/python

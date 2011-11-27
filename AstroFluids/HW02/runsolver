@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Script to run a bunch of LaneEmden Solutions
+# Brett Deaton
+# Fall 2011
+
+DATDIR=data/ # dirname for data output, must include final /
+EXEC1=LaneEmdenSolution_Euler
+EXEC2=LaneEmdenSolution_RK4
+A=_n
+B=_res
+C=.dat
+POLYN=1 # polytropic index
+INITRES=10 # initial resolution (stepsize=pi/res)
+NUMRES=3 # number of resolutions to run
+
+for (( i=0; i<$NUMRES; i++ ))
+do
+    RES=$[$INITRES*($i+1)]
+    $EXEC1 $RES $POLYN $DATDIR$EXEC1$A$POLYN$B$RES$C
+    $EXEC2 $RES $POLYN $DATDIR$EXEC2$A$POLYN$B$RES$C
+done
