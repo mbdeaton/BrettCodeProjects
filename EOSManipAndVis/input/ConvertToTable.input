@@ -1,0 +1,19 @@
+# ConvertToTable.input
+# Brett Deaton June 2011
+
+# **********************************************************************  
+# EoS = Shibata(GammaTh=2.0);
+# EoS = BetaEq(filename=input/LS_beta.input);
+EoS = ColdTable(filename=input/LS_ColdTable.input);
+# EoS = Gamma(Gamma=2;Kappa=1);
+# EoS = SpectralFit(CoefficientsFile=input/LS_constT-coeff16.input;);
+# EoS = SpectralFit(CoefficientsFile=input/LS_extHighrho_constT-coeff17.input;);
+# EoS = SpectralFit(CoefficientsFile=input/PPoly_coeff10.input;);
+# EoS = PiecewisePolytrope(Gammas=1.36,3.00; Rhos=2.45e-4; Kappa0=0.102; Smooth=0; GammaTh=2;);
+
+# **********************************************************************  
+N = 450;
+MakeTableForGnuplotInsteadOfColdTableEOSClass = true;
+RhoMin = 0.161865e-14;
+RhoMax = 0.161865e-01;
+
