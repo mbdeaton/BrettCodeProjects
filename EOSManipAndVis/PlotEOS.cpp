@@ -24,7 +24,7 @@ int main()
   ofstream plotout("ploteos.dat");
   EquationOfState* mEoS = CreateEquationOfState(EoSopts);
 
-  plotout << std::setprecision(13);
+  plotout << std::setprecision(15);
   plotout << "# PlotEOS table\n" <<
     "# " << EoSopts << "\n" <<
     "#[1] rho\n#[2] eps\n#[3] P\n#[4] dP/drho\n#[5] h\n#[6] cs\n";
