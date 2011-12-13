@@ -139,7 +139,7 @@ int main()
   if(makegnuplotTable) commentChar = "#";
   
   // Print table header
-  //tablout << std::setprecision(15);
+  tablout << std::setprecision(13);
   tablout << commentChar << "EoSType = ColdTable\n"
 	  << commentChar << "Nrho = " << Nrho << "\n"
 	  << commentChar << "rhomin = " << RhoMin << "\trhomax = " << RhoMax << "\n"
