@@ -63,8 +63,13 @@ private:
     double j1,j2,j3,j4; // RK4 constants for u
     double k1,k2,k3,k4; // RK4 constants for v
     int i = 0;
-    msolution[0][i] = u;
-    msolution[1][i] = v;
+    // take care of singularity at r==0
+    // also apply the boundary condition to r==mh, so that the first RK4 step is not singular
+    for(; i<2; ++i) {
+      msolution[0][i] = u;
+      msolution[1][i] = v;
+    }
+    // now integrate the rest of the way
     while(i<mres) {
       r = i*mh;
       j1 = mh*g(u,v,r);
