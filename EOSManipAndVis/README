@@ -1,0 +1,11 @@
+6.27.11
+
+I've got a number of different tables and input files dancing around in here:
+
+Table input files for BetaEq EOS
+      derived from the h5 tables directly (via Matt's EOS driver)
+Table input files for ColdTable EOS
+      either derived from my SpectralFit to the tables above (via ConvertToTable)
+      or     derived from tabulated eoss with a polytrope affixed (via AppendPolytropeCrust)
+Coefficient files for my SpectralFitEOS.
+
