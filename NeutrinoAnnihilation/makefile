@@ -3,7 +3,9 @@
 
 CC = g++
 CFLAGS = -Wall
-EXECUTABLE = test
+# EXECUTABLE = TestMonteCarlo2D
+# EXECUTABLE = TestMonteCarlo6D
+EXECUTABLE = ComputeNuAnnihilationTest
 OBJECTFILES =
 GSL_INCLUDE = -I/opt/local/include/gsl -DHAVE_INLINE -DGSL_C99_INLINE \
               -DGSL_RANGE_CHECK_OFF

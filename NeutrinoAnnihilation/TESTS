@@ -1,0 +1,67 @@
+1.18.12
+Below are results from my preliminary test of a piecewise constant distribution function
+
+$ ComputeNuAnnihilationTest 1000
+Plain (N=1000) =======================
+  time   = 0 sec
+  result = 149.6414417266042
+  exact  = 189.33
+  sigma  = 64.25369958432849
+  error  = 0.618 sigma
+Miser (N=1000) =======================
+  time   = 0 sec
+  result = 141.2437657721885
+  exact  = 189.33
+  sigma  = 57.26270058568393
+  error  = 0.84 sigma
+Vegas (N=1000) =======================
+  time   = 0 sec
+  result = 165.4554287963345
+  exact  = 189.33
+  sigma  = 7.627075098251183
+  error  = 3.13 sigma
+
+$ ComputeNuAnnihilationTest 100000
+Plain (N=100000) =======================
+  time   = 1 sec
+  result = 204.4818220817256
+  exact  = 189.33
+  sigma  = 8.605419614370083
+  error  = 1.76 sigma
+Miser (N=100000) =======================
+  time   = 0 sec
+  result = 186.8297638068116
+  exact  = 189.33
+  sigma  = 1.671709061226209
+  error  = 1.5 sigma
+Vegas (N=100000) =======================
+  time   = 0 sec
+  result = 189.5906238861484
+  exact  = 189.33
+  sigma  = 0.188279680946023
+  error  = 1.38 sigma
+
+$ ComputeNuAnnihilationTest 10000000
+Plain (N=10000000) =======================
+  time   = 13 sec
+  result = 189.5598167872045
+  exact  = 189.33
+  sigma  = 0.8172830199644671
+  error  = 0.281 sigma
+Miser (N=10000000) =======================
+  time   = 14 sec
+  result = 188.9415171096283
+  exact  = 189.33
+  sigma  = 0.1779206516585068
+  error  = 2.18 sigma
+Vegas (N=10000000) =======================
+  time   = 69 sec
+  result = 189.3312938812329
+  exact  = 189.33
+  sigma  = 0.01658975982670832
+  error  = 0.078 sigma
+
+Conclusions: seems that vegas gets an order of magnitude better results with 5-6 times the
+	computing walltime.
+
+
