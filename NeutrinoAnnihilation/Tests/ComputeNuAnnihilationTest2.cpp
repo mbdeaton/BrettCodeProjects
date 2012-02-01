@@ -114,14 +114,14 @@ int main (int argc, char** argv) {
     return 1;
   }
 
-  // sanity checks
-  std::cout << "Ebreak = " << Ebreak << std::endl;
-  std::cout << "Escale = " << Escale << std::endl;
-  std::cout << "fermilevel = " << fermilevel << std::endl;
-  std::cout << "HarikaeConst = " << HarikaeConst << std::endl;
-  double xcheck[6] = {pi,0.9*pi,0,0,1.1,1.1};
-  std::cout << "integrand(pi,0.9pi,0,0,11MeV/Escale,11MeV/Escale) = "
-	    << f(xcheck,6,NULL) << " (should be 0.000226092)" << std::endl;
+  //   // sanity checks
+  //   std::cout << "Ebreak = " << Ebreak << std::endl;
+  //   std::cout << "Escale = " << Escale << std::endl;
+  //   std::cout << "fermilevel = " << fermilevel << std::endl;
+  //   std::cout << "HarikaeConst = " << HarikaeConst << std::endl;
+  //   double xcheck[6] = {pi,0.9*pi,0,0,1.1,1.1};
+  //   std::cout << "integrand(pi,0.9pi,0,0,11MeV/Escale,11MeV/Escale) = "
+  // 	    << f(xcheck,6,NULL) << " (should be 0.000226092)" << std::endl;
   
   gsl_rng* rng = gsl_rng_alloc(gsl_rng_ranlxd2);
   unsigned int seed(time(NULL));
