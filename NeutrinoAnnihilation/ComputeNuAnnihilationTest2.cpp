@@ -1,9 +1,6 @@
 // Integrating the neutrino-antineutrino annihilation energy deposition at a point
 //   in space given the distribution functions f_nu(theta,phi,E), f_nubar(theta,phi,E).
-//   Actually this is merely a test of integrating an analytic function in 6 dimensions.
-//   Here I assume the nu and nubar distribution functions are equal, and piecewise constant:
-//   fnu(theta,phi,E) = { 1    (theta > 3pi/4) && (E < 10MeV)
-//                      { 0    otherwise
+//   Here I assume the nu and nubar distribution functions are proportional.
 
 #include<cstdlib>
 #include<ctime>
@@ -30,40 +27,46 @@ const double Ebreak = 1e7*eVToErgFactor; // max energy of neutrinos (erg)
 const double Escale = Ebreak; // substitute E->E/Escale in integrand to normalize and then
 //                               multiply integral by Escale^9 at the end
 const double HarikaeConst = 2*K*G_F2/pow(c,5)/pow(h,6); // integral factor, multiply result by this
-const double result_exact_scaled = 0.1583; // from Mathematica Analytic integration, scaled so that
-//                                            this*HarikaeConst*(Escale^9) is in erg/cm^3/s
+const double result_exact_scaled = 0.6; // from Mathematica numerical integration, scaled so
+//                                         this*HarikaeConst*(Escale^9) is in erg/cm^3/s
+// params for my test function
+const double twidth = pi/4.;
+const double numwobbles = 5; // must be an integer so that f(phi) is continuous
+const double wobblescale = 0.3; // must be between 0 and 1
+const double thermalscale = 0.05*Escale; // k_B*T, scaled
+const double fermilevel = Ebreak;
 
 // Neutrino distribution function (h^{-3} factored out, but not Escale)
 // fnu(theta,phi,E)
-//   theta    polar angle of incoming neutrino ray
-//   phi      azimuthal angle of incoming neutrino ray
-//   E        neutrino energy in erg, not normalized, that's done in f
+//   theta  polar angle of incoming neutrino ray
+//   phi    azimuthal angle of incoming neutrino ray
+//   E      neutrino energy in erg, not normalized, that's done in f
 double fnu(const double& theta, const double& phi, const double& E) {
-  if ((theta>(3.*pi/4.)) && (E<Ebreak))
-    return 1;
-  else
-    return 0;
+  const double fnut = exp(-(theta-pi)*(theta-pi)/twidth/twidth);
+  const double fnup = 1. + wobblescale*sin(numwobbles*phi);
+  const double fnue = 1./(1.+exp((E-fermilevel)/thermalscale));
+  return fnut*fnup*fnue;
 } // END Inline fnu
 
-// AntiNeutrino distribution function (h^{-3} factored out, but not Escale)
-// fnubar(thetabar,phibar,Ebar)
-//   thetabar    polar angle of incoming antineutrino ray
-//   phibar      azimuthal angle of incoming antineutrino ray
-//   Ebar        antineutrino energy in erg, not normalized, that's done in f
+// AntiNeutrino distribution function
+// fnubar(theta,phi,E)
+//   thetabar  polar angle of incoming antineutrino ray
+//   phibar    azimuthal angle of incoming antineutrino ray
+//   Ebar      antineutrino energy, not normalized, that's done in f
 double fnubar(const double& thetabar, const double& phibar, const double& Ebar) {
-  return fnu(thetabar,phibar,Ebar); // in this test implementation fnubar==fnu;
+  return 2.*fnu(thetabar,phibar,Ebar); // in this test implementation fnubar==2*fnu;
 } // END Inline fnubar
 
 // Total Integrand (divided by HarikaeConst, and scaled by Escale^7; the other two factors of
 //   Escale come from dE and dEbar).
 // f = fnu(theta,phi,Escaled*Escale) * fnubar(thetabar,phibar,Ebarscaled*Escale) * otherstuff
 //   x       array of size dim (==6), giving coordinates {theta,thetabar,phi,phibar,E,Ebar}
-//              x[0]=theta       polar angle of incoming neutrino ray
-//              x[1]=thetabar    polar angle of incoming antineutrino ray
-//              x[2]=phi         azimuthal angle of incoming neutrino ray
-//              x[3]=phibar      azimuthal angle of incoming antineutrino ray
-//              x[4]=Escaled     neutrino energy
-//              x[5]=Ebarscaled  antineutrino energy
+//              x[0]=theta        polar angle of incoming neutrino ray
+//              x[1]=thetabar     polar angle of incoming antineutrino ray
+//              x[2]=phi          azimuthal angle of incoming neutrino ray
+//              x[3]=phibar       azimuthal angle of incoming antineutrino ray
+//              x[4]=Escaled      neutrino energy
+//              x[5]=Ebarscaled   antineutrino energy
 //   dim     number of dimensions in x
 //   params  pointer to parameters for the function
 double f(double* x, size_t dim, void* params) {
@@ -89,11 +92,11 @@ void print_result(const std::string method, const int N,
   std::cout << method << " (N=" << N << ") =======================" << std::endl;
   std::cout << "  time   = " << wallseconds << " sec" << std::endl;
   std::cout << std::setprecision(16);
-  std::cout << "  result = " << result << std::endl
-	    << "  exact  = " << result_exact_scaled << std::endl
-	    << "  sigma  = " << sigma << std::endl;
+  std::cout << "  result                 = " << result << std::endl
+	    << "  exact (not very exact) = " << result_exact_scaled << std::endl
+	    << "  sigma                  = " << sigma << std::endl;
   std::cout << std::setprecision(3);
-  std::cout << "  error  = " << fabs(result-result_exact_scaled)/sigma << " sigma" << std::endl;
+  std::cout << "  error (not meaningful) = " << fabs(result-result_exact_scaled)/sigma << " sigma" << std::endl;
 } // END Inline print_result
 
 void help(const std::string exec_name, const int num_expected_args) {
@@ -111,21 +114,22 @@ int main (int argc, char** argv) {
     return 1;
   }
 
-  //   // sanity checks
-  //   std::cout << "Ebreak = " << Ebreak << std::endl;
-  //   std::cout << "Escale = " << Escale << std::endl;
-  //   std::cout << "HarikaeConst = " << HarikaeConst << std::endl;
-  //   double xcheck[6] = {pi,0.9*pi,0,0,0.9*Ebreak/Escale,0.9*Ebreak/Escale};
-  //   std::cout << "integrand(pi,0.9pi,0,0,9MeV/Escale,9MeV/Escale) = "
-  // 	    << f(xcheck,6,NULL) << " (should be 0.00229149)" << std::endl;
-
+  // sanity checks
+  std::cout << "Ebreak = " << Ebreak << std::endl;
+  std::cout << "Escale = " << Escale << std::endl;
+  std::cout << "fermilevel = " << fermilevel << std::endl;
+  std::cout << "HarikaeConst = " << HarikaeConst << std::endl;
+  double xcheck[6] = {pi,0.9*pi,0,0,1.1,1.1};
+  std::cout << "integrand(pi,0.9pi,0,0,11MeV/Escale,11MeV/Escale) = "
+	    << f(xcheck,6,NULL) << " (should be 0.000226092)" << std::endl;
+  
   gsl_rng* rng = gsl_rng_alloc(gsl_rng_ranlxd2);
   unsigned int seed(time(NULL));
   gsl_rng_set(rng,seed);
   const size_t dim(6);
   // integration limits
   double x_low[dim]  = {0,0,0,0,0,0};
-  double x_high[dim] = {pi,pi,2.*pi,2.*pi,1.1,1.1};
+  double x_high[dim] = {pi,pi,2.*pi,2.*pi,1.5,1.5};
   gsl_monte_function F = {&f, dim, 0}; // convert the c++ function to type gsl_monte_function
   size_t N_calls = atoi(argv[1]); // number of function calls
   double result; // monte carlo estimate of the integral
@@ -146,7 +150,7 @@ int main (int argc, char** argv) {
 		 elapsed_walltime);
     // print correctly scaled result
     std::cout << "  Q = " << result*HarikaeConst*pow(Escale,9)
-	      << " +- " << sigma*HarikaeConst*pow(Escale,9) << std::endl;
+              << " +- " << sigma*HarikaeConst*pow(Escale,9) << std::endl;
   }
   
 
@@ -157,13 +161,22 @@ int main (int argc, char** argv) {
     gsl_monte_miser_integrate(&F, x_low, x_high, dim, N_calls, rng, s,
 			      &result, &sigma);
     elapsed_walltime = time(NULL) - start_time;
+    gsl_monte_miser_params params;
+    gsl_monte_miser_params_get(s,&params);
+    //    std::cout << "size of state (bytes) = " << sizeof(*s) << std::endl;
     gsl_monte_miser_free(s); // free up the memory
     print_result(method, N_calls,
 		 result, sigma,
 		 elapsed_walltime);
     // print correctly scaled result
     std::cout << "  Q = " << result*HarikaeConst*pow(Escale,9)
-	      << " +- " << sigma*HarikaeConst*pow(Escale,9) << std::endl;
+              << " +- " << sigma*HarikaeConst*pow(Escale,9) << std::endl;
+    //     // sanity check on integration params
+    //     std::cout << "params.estimate_frac = " << params.estimate_frac << std::endl;
+    //     std::cout << "params.min_calls = " << params.min_calls << std::endl;
+    //     std::cout << "params.min_calls_per_bisection = " << params.min_calls_per_bisection << std::endl;
+    //     std::cout << "params.alpha = " << params.alpha << std::endl;
+    //     std::cout << "params.dither = " << params.dither << std::endl;
   }
 
   {
@@ -181,10 +194,10 @@ int main (int argc, char** argv) {
 		 elapsed_walltime);
     std::cout << "  chisq  = " << chisq << std::endl;
     // print correctly scaled result
-    std::cout << "  Q = " << result*HarikaeConst*pow(Escale,9)
-	      << " +- " << sigma*HarikaeConst*pow(Escale,9) << std::endl;
+    std::cout << "  Q = " << result*HarikaeConst*pow(Escale,9) 
+              << " +- " << sigma*HarikaeConst*pow(Escale,9) << std::endl;
   }
-  
+
   gsl_rng_free(rng); // free up the memory
   return 0;
 }
