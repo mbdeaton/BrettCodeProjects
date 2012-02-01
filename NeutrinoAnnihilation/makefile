@@ -1,19 +1,21 @@
-# Brett Deaton
-# Spring 2012
+##############################################################################
+# Makefile for NeutrinoAnnihilation
+# Brett Deaton Spring 2012
+##############################################################################
+CODE_HOME = ../../../code/SpEC
 
-CC = g++
-CFLAGS = -Wall
-EXECUTABLE = ComputeNuAnnihilationSinglePoint
-OBJECTFILES =
-GSL_INCLUDE = -I/opt/local/include/gsl -DHAVE_INLINE -DGSL_C99_INLINE \
-              -DGSL_RANGE_CHECK_OFF
-GSL_LIB     = -L/opt/local/lib/ -lgsl
+SUBDIRECTORIES = 
 
-all: $(EXECUTABLE)
+LINKED_LIBS = \
+	DataMesh MiscUtils \
+	IO StringParsing Tensor Math \
+	LowLevelUtils ErrorHandling
 
-$(EXECUTABLE): $(EXECUTABLE).cpp $(OBJECTFILES)
-	$(CC) $(CFLAGS) $(GSL_INCLUDE) $(GSL_LIB) \
-	$(EXECUTABLE).cpp -o $(EXECUTABLE)
+EXECUTABLES = \
+	ComputeNuAnnihilationSinglePoint
 
-clean:
-	rm -f *o *~ $(EXECUTABLE)
+##############################################################################
+# Nothing below here needs to be changed
+##############################################################################
+include $(CODE_HOME)/MakefileRules/this_machine.def
+include $(CODE_HOME)/MakefileRules/Rules
