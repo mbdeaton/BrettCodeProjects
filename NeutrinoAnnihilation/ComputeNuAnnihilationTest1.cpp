@@ -21,13 +21,12 @@
 // global vars
 // TODO: put all constants into same system of units
 const double pi = M_PI;
-const double result_exact = 189.33; // from Mathematica Analytic integration
-const double sigma = 1.76; // weak interaction cross-section (in 10^{-48} m^2)
-const double C1plusC2 = 2.34; // weak coupling constants C1+C2 (for electron)
-const double C3 = 1.06; // weak coupling constant for electron
-const double me = 511000; // electron mass (eV/c^2)
-const double h = 4.14; // planck constant (10^{-15} eV s)
-const double scale = sigma/me/me/pow(h,6)/4.; // scale factor, multiply result by this at the end
+const double sin2theta_w = 0.23; // weinberg angle sine squared
+const double G_F2 = 2.06e-32; // Fermi constant squared (cm^2/erg^2)
+const double K = 1.23; // dimensionless parameter from Harikae 2010
+const double c = 3.00e10; // speed of light (cm/s)
+const double scale = 2*K*G_F2/pow(c,5); // scale factor, multiply result by this
+const double result_exact = 1.583e8*scale; // from Mathematica Analytic integration
 
 // Neutrino distribution function
 // fnu(theta,phi,E)
@@ -66,10 +65,10 @@ double f(double* x, size_t dim, void* params) {
     std::cout << "Error, dimension argument is not correct" << std::endl;
     return GSL_NAN; // error
   }
-  const double costerm = 1 - cos(x[0]-x[1]);
-  const double Eterm = (x[4]+x[5])*x[4]*x[4]*x[5]*x[5];
+  const double trigterm = 1. - sin(x[0])*sin(x[1])*cos(x[2]-x[3]) - cos(x[0])*cos(x[1]);
+  const double Eterm = (x[4]+x[5])*pow(x[4],3)*pow(x[5],3);
   const double fterm = fnu(x[0],x[2],x[4])*fnubar(x[1],x[3],x[5]);
-  return fterm * costerm * Eterm * (C1plusC2*costerm*x[4]*x[5]/3 + C3*me*me);
+  return fterm*trigterm*trigterm*Eterm;
 } // END Inline f
 
 // Print the result of a particular calculation
@@ -105,6 +104,10 @@ int main (int argc, char** argv) {
     help(argv[0],num_expected_args);
     return 1;
   }
+
+  //   // sanity check
+  //   double xcheck[6] = {pi,0.9*pi,0,0,1.,1.};
+  //   std::cout << "integrand(pi,0.9pi,0,0,1,1) = " << f(xcheck,6,NULL) << std::endl;
 
   gsl_rng* rng = gsl_rng_alloc(gsl_rng_ranlxd2);
   unsigned int seed(time(NULL));

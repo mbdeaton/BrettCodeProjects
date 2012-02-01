@@ -2,4 +2,18 @@
 Neutrino-Antineutrino Annihilation Energy Deposition Code
 I'm using GSL monte carlo libraries to integrate the 6D energy dep integral.
 
+1.20.12
+Codes thusfar:
+TestMonteCarlo2D
+	integrate a simple 2D integrand to test 3 monte carlo methods:
+	plain, miser, vegas
+TestMonteCarlo6D
+	integrate the same integrand extended to 6D
+ComputeNuAnnihilation1
+	integrate a piecewise constant separable distribution function (6D),
+	sort of like the distribution functions we'll encounter in the more
+	realistic simulation. Also include all the correct factors for the
+	energy deposition integral.
+ComputeNuAnnihilation2
+	integrate separable but more realistic distribution functions
 
