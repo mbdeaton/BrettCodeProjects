@@ -17,3 +17,8 @@ ComputeNuAnnihilation1
 ComputeNuAnnihilation2
 	integrate separable but more realistic distribution functions
 
+1.31.12
+I created a new dir called Tests and put all the above code into these. I also updated the
+ComputeNuAnnihilationTests to reflect my improved understanding of the integrand, its
+dimensional constant, and the need to scale it to order unity. These tests still pass.
+

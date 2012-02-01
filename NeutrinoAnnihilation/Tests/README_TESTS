@@ -1,132 +1,154 @@
-1.18.12
+1.31.12
 Below are results from my preliminary test of a piecewise constant distribution function
 
-$ ComputeNuAnnihilationTest1 1000
+Brett [ Tests ]$ ComputeNuAnnihilationTest1 1000 
 Plain (N=1000) =======================
   time   = 0 sec
-  result = 149.6414417266042
-  exact  = 189.33
-  sigma  = 64.25369958432849
-  error  = 0.618 sigma
+  result = 0.1663043012615954
+  exact  = 0.1583
+  sigma  = 0.06380632818617728
+  error  = 0.125 sigma
+  Q = 2.82e+29 +- 1.08e+29
 Miser (N=1000) =======================
   time   = 0 sec
-  result = 141.2437657721885
-  exact  = 189.33
-  sigma  = 57.26270058568393
-  error  = 0.84 sigma
+  result = 0.2058703497475692
+  exact  = 0.1583
+  sigma  = 0.1265231441254678
+  error  = 0.376 sigma
+  Q = 3.49e+29 +- 2.15e+29
 Vegas (N=1000) =======================
   time   = 0 sec
-  result = 165.4554287963345
-  exact  = 189.33
-  sigma  = 7.627075098251183
-  error  = 3.13 sigma
-
-$ ComputeNuAnnihilationTest1 100000
+  result = 0.1194174169129944
+  exact  = 0.1583
+  sigma  = 0.01014702528012581
+  error  = 3.83 sigma
+  chisq  = 1.98
+  Q = 2.03e+29 +- 1.72e+28
+Brett [ Tests ]$ ComputeNuAnnihilationTest1 100000
 Plain (N=100000) =======================
-  time   = 1 sec
-  result = 204.4818220817256
-  exact  = 189.33
-  sigma  = 8.605419614370083
-  error  = 1.76 sigma
+  time   = 0 sec
+  result = 0.1636851412570028
+  exact  = 0.1583
+  sigma  = 0.0110656986474735
+  error  = 0.487 sigma
+  Q = 2.78e+29 +- 1.88e+28
 Miser (N=100000) =======================
   time   = 0 sec
-  result = 186.8297638068116
-  exact  = 189.33
-  sigma  = 1.671709061226209
-  error  = 1.5 sigma
+  result = 0.161122604010482
+  exact  = 0.1583
+  sigma  = 0.001901232952648228
+  error  = 1.48 sigma
+  Q = 2.73e+29 +- 3.23e+27
 Vegas (N=100000) =======================
-  time   = 0 sec
-  result = 189.5906238861484
-  exact  = 189.33
-  sigma  = 0.188279680946023
-  error  = 1.38 sigma
-
-$ ComputeNuAnnihilationTest1 10000000
+  time   = 1 sec
+  result = 0.1586831030007878
+  exact  = 0.1583
+  sigma  = 0.0002012284026006975
+  error  = 1.9 sigma
+  chisq  = 1.03
+  Q = 2.69e+29 +- 3.41e+26
+Brett [ Tests ]$ ComputeNuAnnihilationTest1 10000000
 Plain (N=10000000) =======================
-  time   = 13 sec
-  result = 189.5598167872045
-  exact  = 189.33
-  sigma  = 0.8172830199644671
-  error  = 0.281 sigma
+  time   = 16 sec
+  result = 0.1590128590123605
+  exact  = 0.1583
+  sigma  = 0.001099693193669872
+  error  = 0.648 sigma
+  Q = 2.7e+29 +- 1.87e+27
 Miser (N=10000000) =======================
-  time   = 14 sec
-  result = 188.9415171096283
-  exact  = 189.33
-  sigma  = 0.1779206516585068
-  error  = 2.18 sigma
+  time   = 16 sec
+  result = 0.1585840908513843
+  exact  = 0.1583
+  sigma  = 0.0001615227240425891
+  error  = 1.76 sigma
+  Q = 2.69e+29 +- 2.74e+26
 Vegas (N=10000000) =======================
-  time   = 69 sec
-  result = 189.3312938812329
-  exact  = 189.33
-  sigma  = 0.01658975982670832
-  error  = 0.078 sigma
+  time   = 83 sec
+  result = 0.1582819155468123
+  exact  = 0.1583
+  sigma  = 1.522966560087643e-05
+  error  = 1.19 sigma
+  chisq  = 0.933
+  Q = 2.69e+29 +- 2.58e+25
 
-Conclusions: seems that vegas gets an order of magnitude better results with 5-6 times the
-	computing walltime.
+Conclusions: results are pretty untrustworthy at N=1e3. At N=1e5, results are good to within
+<1% for Miser, <0.2% for Vegas, and estimated sigmas are good to within a factor of 2. N=1e7
+is too much, but shows a similar trend with increases in accuracy by ~N^{-1/2}. Chisq for Vegas
+is good at N>=1e5.
 
 ******************************************************************************************
-1.19.12
+1.31.12
 Tests of my more realistic separable distribution function
 
-$ ComputeNuAnnihilationTest2 1000
+Brett [ Tests ]$ ComputeNuAnnihilationTest2 1000
 Plain (N=1000) =======================
   time   = 0 sec
-  result = 646.1051542144426
-  exact  = 627.47
-  sigma  = 112.7852243451101
-  error  = 0.165 sigma
+  result                 = 0.8811589860200015
+  exact (not very exact) = 0.6
+  sigma                  = 0.1815324574555965
+  error (not meaningful) = 2.55 sigma
+  Q = 1.5e+30 +- 3.08e+29
 Miser (N=1000) =======================
   time   = 0 sec
-  result = 845.2447317667518
-  exact  = 627.47
-  sigma  = 138.3077056079466
-  error  = 1.57 sigma
+  result                 = 0.5482724709255593
+  exact (not very exact) = 0.6
+  sigma                  = 0.1497921689920312
+  error (not meaningful) = 0.345 sigma
+  Q = 9.3e+29 +- 2.54e+29
 Vegas (N=1000) =======================
   time   = 0 sec
-  result = 625.4737996883392
-  exact  = 627.47
-  sigma  = 9.144248102055172
-  error  = 0.218 sigma
-
-$ ComputeNuAnnihilationTest2 100000
+  result                 = 0.6577081302537404
+  exact (not very exact) = 0.6
+  sigma                  = 0.01772469616635625
+  error (not meaningful) = 3.26 sigma
+  chisq  = 0.976
+  Q = 1.12e+30 +- 3.01e+28
+Brett [ Tests ]$ ComputeNuAnnihilationTest2 100000
 Plain (N=100000) =======================
   time   = 0 sec
-  result = 616.7937969194096
-  exact  = 627.47
-  sigma  = 10.66037554755143
-  error  = 1 sigma
+  result                 = 0.6492686551024672
+  exact (not very exact) = 0.6
+  sigma                  = 0.01459825843999333
+  error (not meaningful) = 3.37 sigma
+  Q = 1.1e+30 +- 2.48e+28
 Miser (N=100000) =======================
   time   = 0 sec
-  result = 633.0400371037659
-  exact  = 627.47
-  sigma  = 3.724076426251869
-  error  = 1.5 sigma
+  result                 = 0.6587001544236945
+  exact (not very exact) = 0.6
+  sigma                  = 0.005575926656942198
+  error (not meaningful) = 10.5 sigma
+  Q = 1.12e+30 +- 9.46e+27
 Vegas (N=100000) =======================
   time   = 1 sec
-  result = 626.8446146186988
-  exact  = 627.47
-  sigma  = 0.4619258034092252
-  error  = 1.35 sigma
-
-$ ComputeNuAnnihilationTest2 10000000
+  result                 = 0.6523518969590276
+  exact (not very exact) = 0.6
+  sigma                  = 0.0006355052100224598
+  error (not meaningful) = 82.4 sigma
+  chisq  = 2.13
+  Q = 1.11e+30 +- 1.08e+27
+Brett [ Tests ]$ ComputeNuAnnihilationTest2 10000000
 Plain (N=10000000) =======================
-  time   = 16 sec
-  result = 626.9681263756369
-  exact  = 627.47
-  sigma  = 1.064057042678151
-  error  = 0.472 sigma
+  time   = 18 sec
+  result                 = 0.6547571738661574
+  exact (not very exact) = 0.6
+  sigma                  = 0.001470617009103405
+  error (not meaningful) = 37.2 sigma
+  Q = 1.11e+30 +- 2.5e+27
 Miser (N=10000000) =======================
-  time   = 16 sec
-  result = 627.7787649505444
-  exact  = 627.47
-  sigma  = 0.2950330545304115
-  error  = 1.05 sigma
+  time   = 19 sec
+  result                 = 0.652090011758879
+  exact (not very exact) = 0.6
+  sigma                  = 0.0005817314482451771
+  error (not meaningful) = 89.5 sigma
+  Q = 1.11e+30 +- 9.87e+26
 Vegas (N=10000000) =======================
-  time   = 81 sec
-  result = 627.4420387076948
-  exact  = 627.47
-  sigma  = 0.03117575526652459
-  error  = 0.897 sigma
+  time   = 97 sec
+  result                 = 0.6522569453048177
+  exact (not very exact) = 0.6
+  sigma                  = 4.236985346613782e-05
+  error (not meaningful) = 1.23e+03 sigma
+  chisq  = 1.08
+  Q = 1.11e+30 +- 7.19e+25
 
-
+Conclusions: Pretty much the same as above for Test1.
 
