@@ -1,15 +1,16 @@
 # Contains the infrastructure and implementations for neutrino heating calculations
 
 # Where is SPEC_HOME relative to this directory
-CODE_HOME = ../../../SpEC/
+CODE_HOME = ../../../code/SpEC/
 
 # What subdirectories should also be compiled
 SUBDIRECTORIES = \
-    $(NULL)
+	$(NULL)
 
 # What .cpp files should be compiled (replace .cpp with .o)
 OBJECT_FILES_INTO_LIB = \
-    $(NULL)
+	NeutrinoAnnihilationIntegral.o \
+	$(NULL)
 
 ##############################################################################
 # Nothing below here needs to be changed
