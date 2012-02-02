@@ -6,8 +6,9 @@ class NeutrinoDistributionFunction;
 template <typename> class CODValue; // compute on demand object
 
 /**
- * Computes energy deposition due to neutrino-antineutrino annihilation (currently,
- * only electron neutrinos are implemented) at requested points in a 3-dimensional
+ * Abstract base class from which is derived different methods for calculating the
+ * energy deposition due to neutrino-antineutrino annihilation (currently,
+ * only electron neutrinos are implemented) at a specified point in a 3-dimensional
  * volume.
  *
  * @author M. Brett Deaton \<brett.deaton@gmail.com\>
@@ -35,7 +36,14 @@ class NeutrinoAnnihilationIntegral {
    */
   virtual double& GetQErrorEstimate() =0;
 
+  /**
+   * Accessors
+   */
+  double target_accuracy() {return target_accuracy_;}
+  double position() {return position_;}
+
  private:
+  double target_accuracy_; // client's requested fractional accuracy of Q
   NeutrinoDistributionFunction* f_;
   MyVector<double> position_; // x,y,z location at which integral is computed, grid coords
   CODValue<double> cod_Q_; // heating rate per volume (erg/cm^3/s)
