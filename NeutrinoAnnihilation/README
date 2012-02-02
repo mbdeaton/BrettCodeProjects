@@ -18,7 +18,7 @@ ComputeNuAnnihilation2
 	integrate separable but more realistic distribution functions
 
 1.31.12
-I created a new dir called Tests and put all the above code into these. I also updated the
+I created a new dir called StandAloneTests and put the above code into it. I also updated the
 ComputeNuAnnihilationTests to reflect my improved understanding of the integrand, its
 dimensional constant, and the need to scale it to order unity. These tests still pass.
 
@@ -27,4 +27,9 @@ into-existence classes, NewAnnihilationIntegral (and its children NAIMiser, NAIV
 GSLMonteCarlo classes (which will wrap the gsl c-code and give it cleaner handles),
 NuDistributionFunction (and its children NDFPiecewiseConstant, NDFSeparableAnalytic,
 NDFRayTraceNu, NDFRayTraceNubar).
+
+2.1.12
+Started migrating to SpEC coding paradigm, with SpEC Makefile and including SpEC structures,
+also placing all executables in dir Executables. For future code here, separate class definitions
+and implementations in to hpp and cpp files.
 

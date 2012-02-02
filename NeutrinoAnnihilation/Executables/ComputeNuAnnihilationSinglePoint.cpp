@@ -1,13 +1,10 @@
-// Integrating the neutrino-antineutrino annihilation energy deposition at a single point
-//   in space.
+// Integrating the neutrino-antineutrino annihilation energy deposition at a single point.
 // Brett Deaton - Feb 2012
 
-#include<cstdlib>
-#include<ctime>
-#include<iostream>
-#include<iomanip>
-#include<cmath>
-#include<string>
+#include <cstdlib>
+#include <string>
+
+#include "Utils/ErrorHandling/Require.hpp"
 
 class NuAnnihilationIntegral;
 class NAIMiser;
@@ -19,12 +16,11 @@ class NDFPiecewiseConstant;
 class NDFSeparableAnalytic;
 class NDFRayTraceNu;
 
+// TODO (brett): get rid of these assumptions about the input grid, accuracy, etc.
 // global vars
-const double xmax(100), ymax(100), zmax(60); // volume assumed to be symmetric about origin (km)
-
-void printerr(const std::string error_message) {
-  std::cout << "** Error. " << error_message << std::endl;
-} // END Inline printerr
+const double g_xmax(100), g_kymax(100), g_zmax(60); // volume assumed symmetric about origin (km)
+const double g_best_accuracy(1e-6); // best fractional accuracy (sigma_Q/Q) currently supported
+const double g_min_Escale(), g_max_Escale(100); // largest and smallest energy scale expected (MeV)
 
 void help(const std::string exec_name, const int num_expected_args) {
   std::cout << "Usage error. This executable requires " << num_expected_args
@@ -50,40 +46,32 @@ int main (int argc, char** argv) {
   const double Escale(atof(argv[5]));
   const double accuracy(atof(argv[6]));
 
-  // sanity checks
-  if ((Escale<0.1) | (Escale>100)) {
-    printerr("Neutrino energy scale seems too large or small.");
-    help(argv[0],num_expected_args);
-    return 1;
-  }
-  if ((accuracy<1e-6) | (accuracy>1)) {
-    printerr("Requested accuracy is too large or too small.");
-    help(argv[0],num_expected_args);
-    return 1;
-  }
-  if ((x[0]<-xmax) | (x[0]>xmax) |
-      (x[1]<-ymax) | (x[1]>ymax) |
-      (x[2]<-zmax) | (x[2]>zmax)) {
-    printerr("Point x,y,z is outside the integrable domain.");
-    help(argv[0],num_expected_args);
-    return 1;
-  }
+  // Sanity Checks
+  // accuracy out of range will cause prohibitively too many or too few rays to be cast.
+  REQUIRE((accuracy<g_best_accuracy) | (accuracy>1),
+	  "Requested accuracy is too large or too small.");
+  // Escale out of range is a sign that the client has misunderstood this argument.
+  REQUIRE((Escale<g_min_Escale) | (Escale>g_max_Escale),
+	  "Neutrino energy scale is too large or small.");
+  REQUIRE((x[0]<-g_xmax) | (x[0]>g_xmax) |
+	  (x[1]<-g_ymax) | (x[1]>g_ymax) |
+	  (x[2]<-g_zmax) | (x[2]>g_zmax)
+	  "Point x,y,z is outside the integrable domain.");
 
   // set up integral
-  NuAnnihilationIntegral* integ;
+  NuAnnihilationIntegral* integral;
   if (method=="-miser") {
-    integ = new NAIMiser(accuracy,Escale,x);
+    integral = new NAIMiser(accuracy,Escale,x);
   }
   else if(method=="-vegas") {
-    integ = new NAIVegas(accuracy,Escale,x);
+    integral = new NAIVegas(accuracy,Escale,x);
   }
   else {
-    printerr("Integration method not recognized.");
-    help(argv[0],num_expected_args);
+    REQUIRE(false,"Integration method not recognized.");
   }
 
-  integ->printresult();
+  integral->PrintResult();
 
-  delete integ;
-  return 0;
+  delete integral;
+  return EXIT_SUCCESS;
 }

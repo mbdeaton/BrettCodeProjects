@@ -2,13 +2,11 @@
 # Makefile for NeutrinoAnnihilation
 # Brett Deaton Spring 2012
 ##############################################################################
-CODE_HOME = ../../../code/SpEC
+CODE_HOME = ../../../../code/SpEC
 
 SUBDIRECTORIES = 
 
 LINKED_LIBS = \
-	DataMesh MiscUtils \
-	IO StringParsing Tensor Math \
 	LowLevelUtils ErrorHandling
 
 EXECUTABLES = \
