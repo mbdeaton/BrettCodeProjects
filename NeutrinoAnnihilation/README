@@ -3,7 +3,7 @@ Neutrino-Antineutrino Annihilation Energy Deposition Code
 I'm using GSL monte carlo libraries to integrate the 6D energy dep integral.
 
 1.20.12
-Codes thusfar:
+Codes thusfar in StandaloneTests:
 TestMonteCarlo2D
 	integrate a simple 2D integrand to test 3 monte carlo methods:
 	plain, miser, vegas
@@ -32,4 +32,9 @@ NDFRayTraceNu, NDFRayTraceNubar).
 Started migrating to SpEC coding paradigm, with SpEC Makefile and including SpEC structures,
 also placing all executables in dir Executables. For future code here, separate class definitions
 and implementations in to hpp and cpp files.
+
+2.3.12
+Moved all my new code over to the SpEC dir tree, in StudentProjects/NeutrinoAnnihilation. This way,
+I can keep track of it through the svn repo and I can build it within SpEC. The only code
+that I can see any reason to keep here in my git repo, are the StandaloneTests
 

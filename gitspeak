@@ -14,6 +14,7 @@ git add <somedirname>
 // delete a file from the index
 git rm
 git rm $(git ls-files --deleted)
+git rm --cached
 
 // commit my changes (this is only to my local repo, not the remote)
 git commit
@@ -25,3 +26,4 @@ git push
 //   before a push or I'll get an error message (if someone else has changed the
 //   remote repo since my last pull.)
 git pull
+
