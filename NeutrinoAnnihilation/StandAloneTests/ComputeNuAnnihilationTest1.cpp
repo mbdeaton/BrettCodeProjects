@@ -22,13 +22,14 @@
 const double pi = M_PI;
 const double sin2theta_w = 0.23; // weinberg angle sine squared
 const double G_F2 = 2.06e-32; // Fermi constant squared (cm^2/erg^2)
-const double K = 1.23; // dimensionless parameter from Harikae 2010
-const double c = 3.00e10; // speed of light (cm/s)
-const double h = 6.63e-27; // planck's constant (erg s)
-const double eVToErgFactor = 1.601e-12;
+const double K = 0.124311; // dimensionless parameter from Harikae 2010
+const double c = 2.998e10; // speed of light (cm/s)
+const double h = 6.626e-27; // planck's constant (erg s)
+const double eVToErgFactor = 1.602e-12;
 const double Ebreak = 1e7*eVToErgFactor; // max energy of neutrinos (erg)
 const double Escale = Ebreak; // substitute E->E/Escale in integrand to normalize and then
 //                               multiply integral by Escale^9 at the end
+const double theta_half_opening_angle = pi/4.;
 const double HarikaeConst = 2*K*G_F2/pow(c,5)/pow(h,6); // integral factor, multiply result by this
 const double result_exact_scaled = 0.1583; // from Mathematica Analytic integration, scaled so that
 //                                            this*HarikaeConst*(Escale^9) is in erg/cm^3/s
@@ -39,7 +40,7 @@ const double result_exact_scaled = 0.1583; // from Mathematica Analytic integrat
 //   phi      azimuthal angle of incoming neutrino ray
 //   E        neutrino energy in erg, not normalized, that's done in f
 double fnu(const double& theta, const double& phi, const double& E) {
-  if ((theta>(3.*pi/4.)) && (E<Ebreak))
+  if ((theta>(pi-theta_half_opening_angle)) && (E<Ebreak))
     return 1;
   else
     return 0;
@@ -111,13 +112,14 @@ int main (int argc, char** argv) {
     return 1;
   }
 
-  //   // sanity checks
-  //   std::cout << "Ebreak = " << Ebreak << std::endl;
-  //   std::cout << "Escale = " << Escale << std::endl;
-  //   std::cout << "HarikaeConst = " << HarikaeConst << std::endl;
-  //   double xcheck[6] = {pi,0.9*pi,0,0,0.9*Ebreak/Escale,0.9*Ebreak/Escale};
-  //   std::cout << "integrand(pi,0.9pi,0,0,9MeV/Escale,9MeV/Escale) = "
-  // 	    << f(xcheck,6,NULL) << " (should be 0.00229149)" << std::endl;
+  // DEBUG: sanity checks
+  std::cout << "Ebreak (erg) = " << Ebreak << std::endl;
+  std::cout << "Escale (erg) = " << Escale << std::endl;
+  std::cout << "theta_half_opening_angle = " << theta_half_opening_angle << std::endl;
+  std::cout << "HarikaeConst = " << HarikaeConst << std::endl;
+  double xcheck[6] = {pi,0.9*pi,0,0,0.9*Ebreak/Escale,0.9*Ebreak/Escale};
+  std::cout << "integrand(pi,0.9pi,0,0,9MeV/Escale,9MeV/Escale) = "
+	    << f(xcheck,6,NULL) << " (should be 0.00229149)" << std::endl;
 
   gsl_rng* rng = gsl_rng_alloc(gsl_rng_ranlxd2);
   unsigned int seed(time(NULL));
@@ -125,8 +127,8 @@ int main (int argc, char** argv) {
   const size_t dim(6);
   // integration limits
   double x_low[dim]  = {0,0,0,0,0,0};
-  double x_high[dim] = {pi,pi,2.*pi,2.*pi,1.1,1.1};
-  gsl_monte_function F = {&f, dim, 0}; // convert the c++ function to type gsl_monte_function
+  double x_high[dim] = {pi,pi,2.*pi,2.*pi,1.2,1.2};
+  gsl_monte_function F = {&f, dim, NULL}; // convert the c++ function to type gsl_monte_function
   size_t N_calls = atoi(argv[1]); // number of function calls
   double result; // monte carlo estimate of the integral
   double sigma; // monte carlo estimate of the 1 stdev error
