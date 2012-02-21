@@ -7,10 +7,8 @@ CFLAGS = -Wall
 # EXECUTABLE = TestMonteCarlo6D
 EXECUTABLE = ComputeNuAnnihilationTest2
 OBJECTFILES =
-GSL_INCLUDE = -I/opt/local/include/gsl -DHAVE_INLINE -DGSL_C99_INLINE \
-              -DGSL_RANGE_CHECK_OFF
-GSL_LIB     = -L/opt/local/lib/ -lgsl
-
+GSL_INCLUDE = -DHAVE_INLINE -DGSL_C99_INLINE -DGSL_RANGE_CHECK_OFF
+GSL_LIB     = -lgsl -lcblas
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(EXECUTABLE).cpp $(OBJECTFILES)
