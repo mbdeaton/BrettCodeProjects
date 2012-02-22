@@ -28,3 +28,10 @@ I've also added a higher precision appended polytrope table (LS_Gamma2_appended_
 which removes the steplike features in the low-density range of the original table. This is
 the table that I should use from now on.
 
+2.22.12
+I've added the shen tables I made from the new Hong Shen table on stellarcollapse.org:
+HShen_ColdTable.input    cold 1d table, the one I use to make appended polytropes, etc
+HShen_EoS.dat            full 3d table, lower res and smaller ranges in rho,T,Ye
+HShen_MuX.dat            chemical potentials
+HShen_Ye.dat             cold beta equilibrium 1d table
+
