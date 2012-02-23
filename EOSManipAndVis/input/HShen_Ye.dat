@@ -1,6 +1,3 @@
-# HShenEOS_rho220_temp180_ye65_version2.0_20111026_EOSmaker_svn9.h5
-# Made by Brett Deaton, 2.22.12
-#  We have nrho ntemp nye:   220  180   65                                                            
 EoSType = ColdBetaYe
 Nrho    = 2000
 RhoMin  = 0.161865E-09
