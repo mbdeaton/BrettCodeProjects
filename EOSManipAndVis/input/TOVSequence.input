@@ -5,7 +5,7 @@
 # EoS = Shibata(GammaTh=2.0);
 # EoS = ColdTable(filename=input/LS_ColdTable.input);
 # EoS = ColdTable(filename=input/LS_Gamma2_appended_ColdTable-highprec.input);
-EoS = ColdTable(filename=input/HShen_ColdTable.input);
+EoS = ColdTable(filename=input/HSapp.input);
 # EoS = BetaEq(filename=input/LS_beta.input);
 # EoS = Gamma(Gamma=2;Kappa=83.8;);
 # EoS = SpectralFit(CoefficientsFile=input/LS_constT-coeff16.input;);
@@ -18,5 +18,5 @@ EoS = ColdTable(filename=input/HShen_ColdTable.input);
 # **********************************************************************  
 N = 2;
 RhoMin = 0.000814;
-RhoMax = 0.003;
+RhoMax = 0.001;
 
