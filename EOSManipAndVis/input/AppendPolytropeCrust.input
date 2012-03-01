@@ -1,6 +1,6 @@
 # AppendPolytropeCrust.input
 # Brett Deaton July 2011
 
-TabulatedEoSFile = input/HS_ColdTable.dat;
-MakeTableForGnuplotInsteadOfColdTableEOSClass = true;
+TabulatedEoSFile = input/HS_ColdTable_short.dat;
+MakeTableForGnuplotInsteadOfColdTableEOSClass = false;
 
