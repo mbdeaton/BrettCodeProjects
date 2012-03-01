@@ -19,7 +19,7 @@ EoS = ColdTable(filename=input/HS_ColdTable.dat);
 # EoS = PiecewisePolytrope(Gammas=1.36,3.00; Rhos=2.45e-4; Kappa0=0.102; Smooth=0; GammaTh=2;);
 
 # **********************************************************************  
-N = 4000;
-RhoMin = 1.e-13;
-RhoMax = 0.000161865;
+N = 2000;
+RhoMin = 1.e-10;
+RhoMax = 0.158181E-01;
 

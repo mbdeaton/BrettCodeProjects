@@ -5,7 +5,7 @@
 # EoS = Shibata(GammaTh=2.0);
 # EoS = ColdTable(filename=input/LS_Gamma2_appended_ColdTable-highprec.input);
 # EoS = ColdTable(filename=input/HS_ColdTable.input);
-EoS = ColdTable(filename=input/HSapp.input);
+EoS = ColdTable(filename=input/HS_ColdTable.dat);
 # EoS = ColdTable(filename=input/LS_ColdTable.input);
 # EoS = ColdTable(filename=input/LS220_cbEoShr.dat);
 # EoS = BetaEq(filename=input/LS_betaeq.input);
@@ -19,8 +19,8 @@ EoS = ColdTable(filename=input/HSapp.input);
 # EoS = PiecewisePolytrope(Gammas=1.36,3.00; Rhos=2.45e-4; Kappa0=0.102; Smooth=0; GammaTh=2;);
 
 # **********************************************************************  
-NumRadialPoints = 5000;
-CentralDensity = 0.000814;
+NumRadialPoints = 4000;
+CentralDensity = 0.0008144;
 TableType = RhoAndPressure; # ForTOVAddGridRadius;
 OutputHighResolution = true;
 
