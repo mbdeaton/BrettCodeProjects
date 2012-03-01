@@ -6,7 +6,8 @@
 # EoS = Tabulated(filename=input/LS220_EoS.dat);
 # EoS = ColdTable(filename=input/LS220_cbEoShr.dat);
 # EoS = ColdTable(filename=input/LS_ColdTable.input);
-EoS = ColdTable(filename=input/HS_ColdTable.input);
+# EoS = ColdTable(filename=input/HS_ColdTable.input);
+EoS = ColdTable(filename=input/HS_ColdTable.dat);
 # EoS = ColdTable(filename=input/LS_Gamma2_appended_ColdTable-highprec.input);
 # EoS = BetaEq(filename=input/LS_beta.input);
 # EoS = Gamma(Gamma=2;Kappa=1);
@@ -18,7 +19,7 @@ EoS = ColdTable(filename=input/HS_ColdTable.input);
 # EoS = PiecewisePolytrope(Gammas=1.36,3.00; Rhos=2.45e-4; Kappa0=0.102; Smooth=0; GammaTh=2;);
 
 # **********************************************************************  
-N = 5000;
+N = 4000;
 RhoMin = 1.e-13;
 RhoMax = 0.000161865;
 

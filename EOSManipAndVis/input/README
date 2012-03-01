@@ -35,3 +35,9 @@ HShen_EoS.dat            full 3d table, lower res and smaller ranges in rho,T,Ye
 HShen_MuX.dat            chemical potentials
 HShen_Ye.dat             cold beta equilibrium 1d table
 
+2.29.12
+I've moved a bunch of tables around (squirreled several away into dir
+OldTables). Also renamed some tables with a more generic convention:
+every table is a *dat file, the full name is given (e.g. LS220 not LS),
+and after "_" the type of table is named with correct capitalizations.
+

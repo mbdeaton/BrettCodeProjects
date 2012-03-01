@@ -5,8 +5,9 @@
 # EoS = Shibata(GammaTh=2.0);
 # EoS = ColdTable(filename=input/LS_ColdTable.input);
 # EoS = ColdTable(filename=input/LS_Gamma2_appended_ColdTable-highprec.input);
-EoS = ColdTable(filename=input/HSapp.input);
+# EoS = ColdTable(filename=input/HS_ColdTable.dat);
 # EoS = BetaEq(filename=input/LS_beta.input);
+EoS = BetaEq(filename=input/ShenBetaEqHr.dat);
 # EoS = Gamma(Gamma=2;Kappa=83.8;);
 # EoS = SpectralFit(CoefficientsFile=input/LS_constT-coeff16.input;);
 # EoS = SpectralFit(CoefficientsFile=input/LS_extHighrho_constT-coeff36.input;);
@@ -16,7 +17,7 @@ EoS = ColdTable(filename=input/HSapp.input);
 # EoS = PiecewisePolytrope(Gammas=1.36,3.00; Rhos=2.45e-4; Kappa0=0.102; Smooth=0; GammaTh=2;);
 
 # **********************************************************************  
-N = 2;
-RhoMin = 0.000814;
-RhoMax = 0.001;
+N = 40;
+RhoMin = 0.0003;
+RhoMax = 0.015;
 

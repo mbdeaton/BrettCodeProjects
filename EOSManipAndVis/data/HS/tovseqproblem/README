@@ -1,0 +1,36 @@
+2.25.12
+I've got a new table made from the HShen EOS v2.0 a week ago. This has brought to light some
+problems, perhaps related. The first problem I saw with the LS220 table also, but did not pursue
+it back when I was initially using that table.
+
+Integrating the TOV equations with a table (I've tried both HShen and LS220) seems to intruduce
+a discontinuity at the surface. At the scale of rho=1e-10, the monotonically decreasing pressure
+suddenly vanishes (going to exactly zero), for a few integration points, then comes back to nearly
+the same level. What's going on here?
+
+This may have something to do with a further problem which is the stellar radius calculation made by
+TOVSolution. R_{*}(rho) does not change smoothly. On the scale of ~5% in r, and about ~0.1% in rho_c,
+it jumps pretty wildly. These jumps do not seem to converge with resolution in the derived table
+(that is when I change nr in EOSdriver/driver.F90.
+
+Tests:
+Table resolution
+	450 vs 2000 points in rho (HShen_ColdTable vs HShen_ColdTable-highres.input)
+	discoveries: changed where the jumps in the tovsequence occured, did not look convergent
+Stellar profiles
+	found 3 stars (rho_cs) living on one of these jumps in the tovsequence and made profiles.
+	Mass,rho largest to smallest: a,b,c; radius largest to smallest: c,b,a
+	discoveries: the surface discontinuity (P,rho vanishing and reappearing) appears in all 3
+		at rho~8e-10. Pressure declines much more steeply in star a after the glitch.
+PlotEOS
+	looked at the EOS in rho vs eps,h,P,cs2 just to see if anything weird showed up
+	discoveries: nothing strange. No glitches around rho~8e-10. However, I did notice that
+		there is a much lower negative internal energy for LS than HShen (at low rho).
+
+2.29.12
+Resolution. I've got a table that makes a smooth TOV sequence now. I'm not
+sure what I did wrong, or what fixed it. But I updated the driver.F90 code
+to be cleaner, to change variable ranges according to which table was being
+read in, and fixed one major error in which I was not setting tmin and tmax
+at all. The sequences (old-bad vs new-smooth) look quite different. So I'm leaving this data here for future reference if need be.
+
