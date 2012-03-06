@@ -27,3 +27,6 @@ git push
 //   remote repo since my last pull.)
 git pull
 
+// see git config info
+git config -l
+

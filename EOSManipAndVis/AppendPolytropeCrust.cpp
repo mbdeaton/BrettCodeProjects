@@ -50,6 +50,15 @@ int main()
   double RhoMin, RhoMax, HeatCapacity, GammaTh, tabKappa;
   int Nrho;
 
+  {
+    // Ignore header comments designated by '#'
+    int safety_count(0);
+    while (tablin.peek()=='#' && safety_count<100) {
+      tablin.ignore(256,'\n');
+      ++safety_count;
+    }
+  }
+  
   tablin.get(buf,100,'='); tablin.get(equalsgn); tablin >> EoSType;
   REQUIRE(EoSType=="ColdTable","EoSType must be ColdTable.")
   tablin.get(buf,100,'='); tablin.get(equalsgn); tablin >> Nrho;
