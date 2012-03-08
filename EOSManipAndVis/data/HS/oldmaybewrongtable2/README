@@ -1,0 +1,18 @@
+3.8.12
+It appears the new table (made with SPECEOSdriver) is also questionable.
+Comparing max mass stars with Evan, we have a discrepancy (both of us
+are using tables we made from HShen*20111026*h5).
+
+Evan's (not sure if he's at table bottom, T0=0.01MeV or my request, T1=0.1MeV)
+rhoc  = 1.3725e15g/cc     = 0.0022221
+mgrav = 2.21401656
+mbary = 2.55993894
+rNS   = 12.6200000km      = 8.546
+
+Mine, as of am 3.8.12, Thr (diff between T0 and T1 is only in rNS)
+rhoc  = 1.35e15g/cc       = 0.00219
+mgrav = 2.224
+mbary = 2.567
+rNS   = 12.7km            = 8.61    (T=T0=0.01MeV)
+rNS   = 12.9km            = 8.74    (T=T1=0.1MeV)
+
