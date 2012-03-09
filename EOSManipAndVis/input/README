@@ -41,3 +41,7 @@ OldTables). Also renamed some tables with a more generic convention:
 every table is a *dat file, the full name is given (e.g. LS220 not LS),
 and after "_" the type of table is named with correct capitalizations.
 
+3.8.12
+Bug discovered in old EOSdriver. I've now moved all those tables (defunct) into
+OldTables/WrongTables.
+

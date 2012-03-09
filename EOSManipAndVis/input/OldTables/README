@@ -2,3 +2,8 @@
 Here I've got a bunch of old tables with their old names, used since
 2010.
 
+3.8.12
+All of the tables previous to today were wrong because of a bug Evan just
+discovered in SpECEOSdriver. I'm still saving them, though, in WrongTables.
+
+

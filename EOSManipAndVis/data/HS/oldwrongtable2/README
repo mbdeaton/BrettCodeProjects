@@ -19,3 +19,14 @@ rNS   = 12.9km            = 8.74    (T=T1=0.1MeV)
 However, I'm still working on this, and talking with Evan. I'm starting to solve
 new ID with this table even though, I've got questions.
 
+Turns out there was a bug. Pretty significant. Energy and Pressure were being
+set off of beta-equilibrium by a few lines that should have been housed in an if
+statement, to be used only when making a micro table. But they were called
+universally.
+
+I've moved some copies of the old (wrong) cold beta-equilibrium tables in here for
+comparisons and reference.
+
+Thus, wer're making new tables, starting new initial data (even for the LS220 case)
+and starting to evolve the inspirals for the Neutrino Leakage paper from scratch.
+
