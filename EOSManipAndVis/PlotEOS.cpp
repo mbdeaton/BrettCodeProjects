@@ -27,7 +27,14 @@ int main()
   plotout << std::setprecision(15);
   plotout << "# PlotEOS table\n" <<
     "# " << EoSopts << "\n" <<
-    "#[1] rho\n#[2] eps\n#[3] P\n#[4] dP/drho\n#[5] h\n#[6] cs\n";
+    "# Units are geometric, with M_sol=1.\n" <<
+    "# Conversion to cgs: rhoscale=6.177e17, Energypermassscale=8.989e20, Pscale=5.552e38\n" <<
+    "#[1] rho\n" <<
+    "#[2] eps, specific energy (E/rho)\n" <<
+    "#[3] P\n" <<
+    "#[4] dP/drho\n" <<
+    "#[5] h, specific enthalpy (1+eps+P/rho)\n" <<
+    "#[6] cs, adiabatic relativistic sound speed (nonrelcs/sqrt(h))\n";
 
   for(int i=0; i<N; i++) {
     logrho = logmin + (double(i)/(N-1.0))*(logmax - logmin);
