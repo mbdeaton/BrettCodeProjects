@@ -2,3 +2,7 @@
 We discovered an error in the way we were making EOS tables. I've placed the old tables
 int here.
 
+The error had almost negligible effect at the low temp end of the table. But the new table
+yields a 1.4M_sol star with rho_c different by ~0.5%.
+
+
