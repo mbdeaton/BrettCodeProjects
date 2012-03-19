@@ -38,3 +38,8 @@ Moved all my new code over to the SpEC dir tree, in StudentProjects/NeutrinoAnni
 I can keep track of it through the svn repo and I can build it within SpEC. The only code
 that I can see any reason to keep here in my git repo, are the StandaloneTests
 
+3.19.12
+I'm Working on a virtual class structure representing a Geodesic that both Andy and I can derive,
+respectively class NullGeodesic and NeutrinoGeodesic.
+His work can be seen in: /home/abohn/spec/projects/EventHorizon/EvolveGeodesics.
+My work is in $SPECHOME/StudentProjects/NeutrinoAnnihilation/
