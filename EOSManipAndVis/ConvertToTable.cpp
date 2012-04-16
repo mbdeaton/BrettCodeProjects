@@ -1,8 +1,11 @@
-#include "Hydro/HydroComputeItems/EquationOfState.hpp"
+#include "Hydro/EquationOfState/NeosEquationOfState.hpp"
+#include "Hydro/EquationOfState/NeosGlobalState.hpp"
+#include "Hydro/EquationOfState/NeosPhysicalState.hpp"
 #include "Utils/StringParsing/OptionParser.hpp"
 #include "Utils/StringParsing/ReadFileIntoString.hpp"
 
 #include <cmath>
+#include <fstream>
 
 // 6.27.11
 // Brett Deaton
@@ -20,14 +23,14 @@ int main()
   double rhomin = p.Get<double>("RhoMin");
   double rhomax = p.Get<double>("RhoMax");
 
-  EquationOfState* mEoS = CreateEquationOfState(EoSopts);
+  const NeosEquationOfState mEoS(EoSopts);
 
   double HeatCapacity = 1e-3; // this is for T extrapolation
   double GammaTh = 2;
   double kappa = 100;
   std::string RhoSpacing = "Log";
   double mlrho, lrhomin = log10(rhomin), lrhomax = log10(rhomax);
-  ofstream tablout("converttotable.dat");
+  std::ofstream tablout("converttotable.dat");
 
   std::string commentChar = "";
   if(makegnuplotTable) commentChar = "#";
@@ -41,18 +44,21 @@ int main()
           << commentChar << "kappa = " << kappa << "\n"
           << commentChar << "RhoSpacing = " << RhoSpacing << "\n";
   
+  const double minTemp(mEoS.GetGlobalState().MinValidT());
+  // below commented out before transition to neos eos framework
+  //  const double minYe(mEoS.GetGlobalState().MinValidYe());
+  const double minYe(0.15);
+
   // Print table                                                                                  
   for(int i=0; i<Nrho; ++i)
     {
       mlrho = lrhomin + (double(i) / (Nrho-1.0)) * (lrhomax - lrhomin);
-      mEoS->set_primitives(pow(10,mlrho)); mEoS->SetRhoDerivs();
+      const NeosPhysicalState mps = mEoS.CreatePhysicalState(pow(10,mlrho),minTemp,minYe);
       if(makegnuplotTable) tablout << pow(10,mlrho) << "   ";
-      tablout << mEoS->Epsilon() << "   "
-              << log10(mEoS->Pressure() / kappa) / mlrho << "   "
-              << mEoS->SoundSpeed() << "\n";
+      tablout << mps.EnergyDensity() << "   "
+              << log10(mps.Pressure() / kappa) / mlrho << "   "
+              << mps.SoundSpeed() << "\n";
     }
-  
-  delete mEoS;
   
   return 1;
 }

@@ -4,7 +4,9 @@
 //   log spacing in rho. Prints: rho, eps, P, dP/drho, h, cs
 
 #include "Hydro/HydroStates/TOVSolution.hpp"
-#include "Hydro/HydroComputeItems/EquationOfState.hpp"
+#include "Hydro/EquationOfState/NeosEquationOfState.hpp"
+#include "Hydro/EquationOfState/NeosGlobalState.hpp"
+#include "Hydro/EquationOfState/NeosPhysicalState.hpp"
 #include "Utils/StringParsing/OptionParser.hpp"
 #include "Utils/StringParsing/ReadFileIntoString.hpp"
 #include <iomanip>
@@ -22,7 +24,7 @@ int main()
   double logmin = log10(rho_min), logmax = log10(rho_max);
   double logrho, rho;
   ofstream plotout("ploteos.dat");
-  EquationOfState* mEoS = CreateEquationOfState(EoSopts);
+  const NeosEquationOfState mEoS(EoSopts);
 
   plotout << std::setprecision(15);
   plotout << "# PlotEOS table\n" <<
@@ -36,18 +38,21 @@ int main()
     "#[5] h, specific enthalpy (1+eps+P/rho)\n" <<
     "#[6] cs, adiabatic relativistic sound speed (nonrelcs/sqrt(h))\n";
 
+  const double minTemp(mEoS.GetGlobalState().MinValidT());
+  // below commented out before transition to neos eos framework
+  //  const double minYe(mEoS.GetGlobalState().MinValidYe());
+  const double minYe(0.15);
   for(int i=0; i<N; i++) {
     logrho = logmin + (double(i)/(N-1.0))*(logmax - logmin);
     rho = pow(10,logrho);
-    mEoS->set_primitives(rho);
-    mEoS->SetRhoDerivs();
+    const NeosPhysicalState mps = mEoS.CreatePhysicalState(rho,minTemp,minYe);
     plotout <<
       rho << "  " <<
-      mEoS->Epsilon() << "  " <<
-      mEoS->Pressure() << "  " <<
-      mEoS->dPdrho() << "  " <<
-      mEoS->Enthalpy() << "  " <<
-      mEoS->SoundSpeed() << "  " << "\n";
+      mps.EnergyDensity() << "  " <<
+      mps.Pressure() << "  " <<
+      mps.dPdrho0() << "  " <<
+      mps.Enthalpy() << "  " <<
+      mps.SoundSpeed() << "  " << "\n";
   }
 
   return 1;
