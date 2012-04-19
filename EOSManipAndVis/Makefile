@@ -1,24 +1,58 @@
 ##############################################################################
-# $Id: Makefile 14856 2010-11-23 23:03:42Z kidder $
-##############################################################################
-# Makefile for HydroStates
+# Makefile for EOSManipAndVis
 ##############################################################################
 CODE_HOME = ../../../Code/SpEC
 
-SUBDIRECTORIES = 
+SUBDIRECTORIES = \
+	$(NULL)
 
 LINKED_LIBS = \
-	HydroStates HydroComputeItems FiniteDifference \
-	Functionals SpherePack \
-	SpatialCoordMaps Domain Slice Subdomain Topology IndexMap CoordMap \
-	EinsteinSolutions TensorFunctions CoordinateTransformations \
-	Functionals Domain Slice Subdomain Topology \
-	DataMesh IndexMap CoordMap MiscUtils \
-	IO DataBox Vars StringParsing Tensor Math \
-	MpiWrappers MyContainers LowLevelUtils ErrorHandling
+	HydroStates \
+	HydroComputeItems \
+	EquationOfState \
+	FiniteDifference \
+	Functionals \
+	SpherePack \
+	SpatialCoordMaps \
+	Domain \
+	Slice \
+	Subdomain \
+	Topology \
+	IndexMap \
+	CoordMap \
+	EinsteinSolutions \
+	TensorFunctions \
+	CoordinateTransformations \
+	Functionals \
+	Domain \
+	Slice \
+	Subdomain \
+	Topology \
+	DataMesh \
+	IndexMap \
+	CoordMap \
+	MiscUtils \
+	IO \
+	DataBox \
+	Vars \
+	StringParsing \
+	Tensor \
+	Math \
+	MpiWrappers \
+	MyContainers \
+	LowLevelUtils \
+	ErrorHandling \
+	$(NULL)
 
-EXECUTABLES           = TOVSequence PlotEOS ConvertToTable StellarProfile TOVAddGridRadius \
-	AppendPolytropeCrust
+EXECUTABLES = \
+	TOVSequence \
+	PlotEOS \
+	ConvertToTable \
+	StellarProfile \
+	TOVAddGridRadius \
+	AppendPolytropeCrust \
+	ConvertTabulatedEOSDatToVtk \
+	$(NULL)
 
 ##############################################################################
 # Nothing below here needs to be changed
