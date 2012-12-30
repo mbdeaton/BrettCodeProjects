@@ -1,8 +1,9 @@
-PlotEOS
-AppendPolytropeCrust
-StellarProfile
-ConvertToTable
-TOVAddGridRadius
-TOVSequence
-Dependencies
-ConvertTabulatedEOSDatToVtk
+/Makefile
+/PlotEOS
+/AppendPolytropeCrust
+/StellarProfile
+/ConvertToTable
+/TOVAddGridRadius
+/TOVSequence
+/Dependencies
+/ConvertTabulatedEOSDatToVtk

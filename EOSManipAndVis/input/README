@@ -45,3 +45,6 @@ and after "_" the type of table is named with correct capitalizations.
 Bug discovered in old EOSdriver. I've now moved all those tables (defunct) into
 OldTables/WrongTables.
 
+12.30.12
+I moved the Makefile into here so that I could make it machine-dependent.
+
