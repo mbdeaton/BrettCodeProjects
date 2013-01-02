@@ -51,7 +51,6 @@ EXECUTABLES = \
 	StellarProfile \
 	TOVAddGridRadius \
 	AppendPolytropeCrust \
-	ConvertTabulatedEOSDatToVtk \
 	$(NULL)
 
 ##############################################################################

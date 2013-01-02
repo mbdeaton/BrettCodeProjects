@@ -13,7 +13,7 @@ int main()
   double rho_max = p.Get<double>("RhoMax");
 
   int dim = 3;
-  double Scale = 100.0, Pdeplete = 1.0;
+  const double Pdeplete = 1.0;
   double lnmin = log(rho_min), lnmax = log(rho_max);
   ofstream seqout("tovseq.dat");
   TOVSolution* profiles;
@@ -25,7 +25,7 @@ int main()
   for(int i=0; i<N; i++) {
     double lnrho = lnmin + (double(i)/(N-1.0))*(lnmax - lnmin);
     double rho_c = exp(lnrho);
-    profiles = new TOVSolution(rho_c,dim,EoSopts,Scale,Pdeplete,true);
+    profiles = new TOVSolution(rho_c,dim,EoSopts,Pdeplete,true);
     double M = profiles->GetMass();
     double R = profiles->GetCircRadius();
     seqout << rho_c << "  " << M << "  " << R << std::endl;

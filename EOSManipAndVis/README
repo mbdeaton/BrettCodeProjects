@@ -13,3 +13,9 @@ Table input files for ColdTable EOS
       or     derived from tabulated eoss with a polytrope affixed (via AppendPolytropeCrust)
 Coefficient files for my SpectralFitEOS.
 
+*************************************************************************************
+1.2.13
+Trying to get these execs to compile separate from the SpEC repository. What I've tried:
+- ln the $SPEC_HOME/MakefileRules to the head of this repo. (compiles indefinitely)
+- fixed a few updates in the interface to SpEC libraries
+

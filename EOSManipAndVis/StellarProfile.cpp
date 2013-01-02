@@ -26,8 +26,8 @@ int main()
   int dim = 3;
   int precision = 6;
   if (output_high_res) precision = 15;
-  double Scale = 100.0, Pdeplete = 1.0;
-  TOVSolution profile(rho_c,dim,EoSopts,Scale,Pdeplete,true);
+  const double Pdeplete = 1.0;
+  TOVSolution profile(rho_c,dim,EoSopts,Pdeplete,true);
   ofstream profout("profile.dat");
   profout << setprecision(precision);
   

@@ -60,7 +60,7 @@ int main()
   }
   
   tablin.get(buf,100,'='); tablin.get(equalsgn); tablin >> EoSType;
-  REQUIRE(EoSType=="ColdTable","EoSType must be ColdTable.")
+  REQUIRE(EoSType=="ColdTable","EoSType must be ColdTable.");
   tablin.get(buf,100,'='); tablin.get(equalsgn); tablin >> Nrho;
   tablin.get(buf,100,'='); tablin.get(equalsgn); tablin >> RhoMin;
   tablin.get(buf,100,'='); tablin.get(equalsgn); tablin >> RhoMax;
