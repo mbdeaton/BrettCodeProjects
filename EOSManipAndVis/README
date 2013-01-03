@@ -19,3 +19,6 @@ Trying to get these execs to compile separate from the SpEC repository. What I'v
 - ln the $SPEC_HOME/MakefileRules to the head of this repo. (compiles indefinitely)
 - fixed a few updates in the interface to SpEC libraries
 
+1.3.13
+Now, I'm trying to make them compile inside SpEC dir structure, using a branch.
+
