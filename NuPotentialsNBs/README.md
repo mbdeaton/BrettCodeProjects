@@ -13,3 +13,10 @@ Several versions exist, for calculations from different inputs.
 * `nu_and_matter_potentials_analytic*.nb`
   This if for computing V_nunu and V_e from ray tracing output and
   Rebecca Surman's phenomenological wind model.
+
+# ToDo
+These items need work
+
+* Clean up the history and notebook caching so that you can effectively diff,
+  (which is important for versioning also). See this helpful discussion on
+  [stackexchange](http://mathematica.stackexchange.com/questions/11258/are-there-suitable-versioning-systems-for-mathematica-notebooks).
