@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     11140,        345]
-NotebookOptionsPosition[      9745,        293]
-NotebookOutlinePosition[     10117,        309]
-CellTagsIndexPosition[     10074,        306]
+NotebookDataLength[     11194,        346]
+NotebookOptionsPosition[      9799,        294]
+NotebookOutlinePosition[     10171,        310]
+CellTagsIndexPosition[     10128,        307]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -284,9 +284,10 @@ Cell[BoxData[
   RowBox[{
   "matterDirectory", "=", 
    "\"\</Users/mbdeaton/Documents/ResearchGraveyard/NuclearAstrophysics/\
-DataAndVis/20150923-data_for_disk_wind_models/fern/Trajectories\>\""}], 
+DataAndVis/20150923-data_for_disk_wind_models/fern-hmns/Trajectories\>\""}], 
   ";"}]], "Code",
- CellChangeTimes->{{3.65494841372878*^9, 3.654948419135893*^9}}]
+ CellChangeTimes->{{3.65494841372878*^9, 3.654948419135893*^9}, {
+  3.662824045645286*^9, 3.662824046289668*^9}}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -343,7 +344,7 @@ Cell[9009, 264, 316, 9, 74, "Code"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[9374, 279, 37, 0, 34, "Subsection"],
-Cell[9414, 281, 291, 7, 43, "Code"]
+Cell[9414, 281, 345, 8, 43, "Code"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
