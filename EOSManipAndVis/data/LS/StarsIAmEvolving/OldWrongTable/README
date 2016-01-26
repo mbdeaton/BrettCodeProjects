@@ -1,4 +1,0 @@
-3.8.12
-we discovered a bug in the way we were computing our old EOS tables, here is where
-the old files lie.
-

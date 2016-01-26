@@ -1,9 +1,0 @@
-rho_c = 0.00081448, P_c = 9.4872e-05, eps_c = 0.00087594
-Scale = 100, Pressure Depletion = 1
-finished odeint with kount = 5203, r = 9.84155, and P = 6.379e-23
-Found TOV solution for rho_c = 0.00081448
-       Mass     = 1.40001
-       RestMass = 1.51866
-       Radius   = 8.38308
-       Circ Radius = 9.84155
-       Surf Lapse  =  0.845866  0.845866  9.84155

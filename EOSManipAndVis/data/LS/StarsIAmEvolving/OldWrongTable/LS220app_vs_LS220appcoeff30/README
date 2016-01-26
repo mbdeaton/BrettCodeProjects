@@ -1,7 +1,0 @@
-11.1.11
-Just from plots of stellar density profiles, coeff30 looks much better than the others.
-However, looking at the ploteos plots, it's clear that there are gibbs-like oscillations
-at logrho~-6. These are bad enough to make an unstable eos (P is not monotonic in rho).
-
-I think i'm putting this idea to rest.
-

@@ -1,6 +1,0 @@
-11.23.11
-Here I'm showing some differences between the high precision and low precision output
-of AppendPolytrope. I discovered (sadly) that my original table (used in all experiments
-up till now) was printed with too few significant digits. The low-end of the density range
-therefore had step-like features (in eps, not in P)
-
