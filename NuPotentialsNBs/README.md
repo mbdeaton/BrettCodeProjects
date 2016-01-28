@@ -14,9 +14,38 @@ Several versions exist, for calculations from different inputs.
   This if for computing V_nunu and V_e from ray tracing output and
   Rebecca Surman's phenomenological wind model.
 
+# Version control for Notebooks
+
+For a discussion about versioning Mathematica Notebooks, see
+[this stackexchange thread](http://mathematica.stackexchange.com/questions/11258/are-there-suitable-versioning-systems-for-mathematica-notebooks).
+By default Notebooks keep around a lot of metadata, output, and timestamps; this
+adds a lot fluff to diffs. To reduce this clutter, I follow Simon's advice from
+the thread above and
+
+1. turn off notebook history
+2. clear old notebook history
+3. turn off notebook cache
+4. delete all output ("Cell"->"Delete All Output")
+
+After the initial purge (done when I migrate an existing Notebook to a version
+control system), I subsequently only perform step (4) before I commit or diff
+changes to a Notebook.
+
+# Using the Notebooks
+When I want to compute V_nunu, I
+
+1. Copy the relevant Notebooks, `nu_and_matter_potentials*.nb` and
+  `nu_and_matter_potentials*-config.nb`, from the repo to the run directory
+  containing the output from `ComputeDistribFunction`.
+2. In the run directory, open the two Notebooks in Mathematica's Front End.
+3. Edit `*config.nb` to reflect the new data set.
+4. Evaluate `*potentials.nb` ("Evaluation"->"Evaluate Notebook").
+
+Output from the computation is in `*out` and `*pdf`.
+Note: if I wish to change some input and reevaluate the Notebook, I purge the
+memory first ("Evaluation"->"Quit Kernel").
+
 # ToDo
 These items need work
 
-* Clean up the history and notebook caching so that you can effectively diff,
-  (which is important for versioning also). See this helpful discussion on
-  [stackexchange](http://mathematica.stackexchange.com/questions/11258/are-there-suitable-versioning-systems-for-mathematica-notebooks).
+* Nothing right now.
