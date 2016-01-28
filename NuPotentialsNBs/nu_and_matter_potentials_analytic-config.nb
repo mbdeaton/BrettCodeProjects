@@ -1,28 +1,7 @@
-(* Content-type: application/mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 7.0' *)
-
-(*CacheID: 234*)
-(* Internal cache information:
-NotebookFileLineBreakTest
-NotebookFileLineBreakTest
-NotebookDataPosition[       145,          7]
-NotebookDataLength[     11194,        346]
-NotebookOptionsPosition[      9799,        294]
-NotebookOutlinePosition[     10171,        310]
-CellTagsIndexPosition[     10128,        307]
-WindowFrame->Normal*)
-
-(* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["Config File for nu_potentials.nb", "Title",
- CellChangeTimes->{{3.654947844046527*^9, 3.654947844186713*^9}, {
-  3.6549478743694763`*^9, 3.654947891298461*^9}}],
+Cell["Config File for nu_potentials.nb", "Title"],
 
 Cell["\<\
 Configuration file or calculating neutrino potentials from tables of \
@@ -37,28 +16,20 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"trajectoryThetadeg", "=", "0"}], ";"}], "\n", 
  RowBox[{
-  RowBox[{"trajectoryName", "=", 
-   RowBox[{
-    RowBox[{"PadRight", "[", 
-     RowBox[{
-      RowBox[{"StringSplit", "[", 
-       RowBox[{
-        RowBox[{"ToString", "[", "trajectoryThetadeg", "]"}], ",", 
-        "\"\<\>\""}], "]"}], ",", "2", ",", "\"\<0\>\""}], "]"}], "<>", 
-    "\"\<deg\>\""}]}], ";", 
+  RowBox[{
+   RowBox[{"trajectoryName", "=", 
+    RowBox[{
+     RowBox[{"PadRight", "[", 
+      RowBox[{
+       RowBox[{"StringSplit", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", "trajectoryThetadeg", "]"}], ",", 
+         "\"\<\>\""}], "]"}], ",", "2", ",", "\"\<0\>\""}], "]"}], "<>", 
+     "\"\<deg\>\""}]}], ";"}], 
   RowBox[{"(*", " ", 
    RowBox[{
     RowBox[{"enforce", " ", "2"}], "-", 
-    RowBox[{"digit", " ", "format"}]}], " ", "*)"}]}]}], "Code",
- CellChangeTimes->{
-  3.655230543030305*^9, {3.6552306222030783`*^9, 3.6552306223554*^9}, {
-   3.655478791149016*^9, 3.6554787919690933`*^9}, 3.655478837401634*^9, {
-   3.655479412658025*^9, 3.65547942122228*^9}, {3.655479519726128*^9, 
-   3.655479538170388*^9}, {3.65548030503563*^9, 3.655480349023525*^9}, {
-   3.6554810547018633`*^9, 3.655481058282668*^9}, {3.655484346668495*^9, 
-   3.655484353262002*^9}, {3.655485661771985*^9, 3.6554856648117723`*^9}, {
-   3.65548579481236*^9, 3.655485796877495*^9}, {3.662815133873754*^9, 
-   3.662815145596092*^9}}],
+    RowBox[{"digit", " ", "format"}]}], " ", "*)"}]}]}], "Code"],
 
 Cell[BoxData[
  RowBox[{
@@ -67,8 +38,7 @@ Cell[BoxData[
 Cell["\<\
 Later, extract the variables below from the DistribFunction*dat, SpEC*.out, \
 and {dens,efrc}_ascii_190-*.dat files.\
-\>", "Text",
- CellChangeTimes->{{3.655014490091077*^9, 3.655014531486754*^9}}],
+\>", "Text"],
 
 Cell[BoxData[{
  RowBox[{
@@ -114,12 +84,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"orientPretty", "=", "False"}], ";"}], "\n", 
  RowBox[{
-  RowBox[{"findBestPointing", "=", "False"}], ";"}]}], "Code",
- CellChangeTimes->{{3.6550138908384123`*^9, 3.655013950903956*^9}, {
-  3.655014933388357*^9, 3.655014938040317*^9}, {3.655015800530142*^9, 
-  3.655015810891822*^9}, {3.6550158571782417`*^9, 3.655015865822365*^9}, {
-  3.655024533064166*^9, 3.655024548367893*^9}, {3.6550247055459423`*^9, 
-  3.655024752019661*^9}, {3.655028284075761*^9, 3.6550282844407682`*^9}}],
+  RowBox[{"findBestPointing", "=", "False"}], ";"}]}], "Code"],
 
 Cell[BoxData[{
  RowBox[{
@@ -143,15 +108,7 @@ Cell[BoxData[{
    RowBox[{
    "conversion", " ", "factor", " ", "to", " ", "take", " ", "r", " ", "in", 
     " ", "the", " ", "dat", " ", "file", " ", "to", " ", "cm"}], " ", 
-   "*)"}]}]}], "Code",
- CellChangeTimes->{{3.655010619915594*^9, 3.655010650295659*^9}, {
-  3.655010766302985*^9, 3.655010767475361*^9}, {3.6550122129913187`*^9, 
-  3.65501222164318*^9}, {3.6550145793028517`*^9, 3.6550145805711803`*^9}, {
-  3.655015818748679*^9, 3.6550158490802526`*^9}, {3.655016146343246*^9, 
-  3.655016153964651*^9}, {3.655016541934753*^9, 3.655016558473538*^9}, {
-  3.655016594281674*^9, 3.6550166035248823`*^9}, {3.655016653753845*^9, 
-  3.655016661039173*^9}, {3.655017202010285*^9, 3.65501722717161*^9}, {
-  3.655028483677079*^9, 3.655028484049823*^9}}]
+   "*)"}]}]}], "Code"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -162,9 +119,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"runDirectory", "=", 
    RowBox[{"SetDirectory", "[", 
-    RowBox[{"NotebookDirectory", "[", "]"}], "]"}]}], ";"}]], "Code",
- CellChangeTimes->{
-  3.6549484239661303`*^9, {3.654962430638918*^9, 3.654962436786888*^9}}],
+    RowBox[{"NotebookDirectory", "[", "]"}], "]"}]}], ";"}]], "Code"],
 
 Cell[CellGroupData[{
 
@@ -186,16 +141,11 @@ Cell[BoxData[
    RowBox[{"(*", " ", 
     RowBox[{
     "extract", " ", "numerical", " ", "distance", " ", "along", " ", 
-     "trajectory"}], " ", "*)"}], "\n", "  ", "]"}]}]], "Code",
- CellChangeTimes->{{3.655481593725206*^9, 3.655481593781226*^9}, {
-  3.655481703434456*^9, 3.655481735468116*^9}, {3.655482200565795*^9, 
-  3.655482234510565*^9}, {3.655482291532069*^9, 3.6554823138455133`*^9}}],
+     "trajectory"}], " ", "*)"}], "\n", "  ", "]"}]}]], "Code"],
 
 Cell[CellGroupData[{
 
 Cell["Get list of observation directories", "Subsubsection"],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -220,24 +170,7 @@ Cell[BoxData[{
     RowBox[{"GetRadiusFromDirectoryName", "/@", "observationDirectories"}], 
     "]"}], "*", "rTocmDirName"}]}], "\n", 
  RowBox[{"numObservations", "=", 
-  RowBox[{"Length", "[", "observationDirectories", "]"}]}]}], "Code",
- CellChangeTimes->{{3.654961891717832*^9, 3.6549619050367517`*^9}, {
-  3.655024506488432*^9, 3.655024527568405*^9}, {3.655024755493668*^9, 
-  3.65502476826112*^9}, {3.655024862337818*^9, 3.655024863270105*^9}, {
-  3.655480581042762*^9, 3.6554805832628202`*^9}, {3.655481369663006*^9, 
-  3.655481370123468*^9}}],
-
-Cell[BoxData[
- RowBox[{"{", "}"}]], "Output",
- CellChangeTimes->{{3.6628151400391273`*^9, 3.662815155111837*^9}}],
-
-Cell[BoxData[
- RowBox[{"{", "}"}]], "Output",
- CellChangeTimes->{{3.6628151400391273`*^9, 3.6628151551132717`*^9}}],
-
-Cell[BoxData["0"], "Output",
- CellChangeTimes->{{3.6628151400391273`*^9, 3.6628151551143312`*^9}}]
-}, Open  ]]
+  RowBox[{"Length", "[", "observationDirectories", "]"}]}]}], "Code"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -285,9 +218,7 @@ Cell[BoxData[
   "matterDirectory", "=", 
    "\"\</Users/mbdeaton/Documents/ResearchGraveyard/NuclearAstrophysics/\
 DataAndVis/20150923-data_for_disk_wind_models/fern-hmns/Trajectories\>\""}], 
-  ";"}]], "Code",
- CellChangeTimes->{{3.65494841372878*^9, 3.654948419135893*^9}, {
-  3.662824045645286*^9, 3.662824046289668*^9}}]
+  ";"}]], "Code"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -295,61 +226,8 @@ DataAndVis/20150923-data_for_disk_wind_models/fern-hmns/Trajectories\>\""}],
 AutoGeneratedPackage->Automatic,
 WindowSize->{640, 750},
 WindowMargins->{{Automatic, 13}, {Automatic, 3}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+TrackCellChangeTimes->False,
 FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
 StyleDefinitions->"Default.nb"
 ]
-(* End of Notebook Content *)
-
-(* Internal cache information *)
-(*CellTagsOutline
-CellTagsIndex->{}
-*)
-(*CellTagsIndex
-CellTagsIndex->{}
-*)
-(*NotebookFileOutline
-Notebook[{
-Cell[CellGroupData[{
-Cell[567, 22, 166, 2, 76, "Title"],
-Cell[736, 26, 118, 3, 26, "Text"],
-Cell[CellGroupData[{
-Cell[879, 33, 68, 0, 67, "Section"],
-Cell[950, 35, 1101, 25, 59, "Code"],
-Cell[2054, 62, 86, 2, 43, "Code"],
-Cell[2143, 66, 206, 4, 41, "Text"],
-Cell[2352, 72, 1790, 49, 289, "Code"],
-Cell[4145, 123, 1315, 30, 119, "Code"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[5497, 158, 47, 0, 67, "Section"],
-Cell[5547, 160, 251, 6, 43, "Code"],
-Cell[CellGroupData[{
-Cell[5823, 170, 53, 0, 34, "Subsection"],
-Cell[5879, 172, 776, 19, 89, "Code"],
-Cell[CellGroupData[{
-Cell[6680, 195, 60, 0, 24, "Subsubsection"],
-Cell[CellGroupData[{
-Cell[6765, 199, 1205, 28, 104, "Code"],
-Cell[7973, 229, 113, 2, 27, "Output"],
-Cell[8089, 233, 115, 2, 27, "Output"],
-Cell[8207, 237, 98, 1, 27, "Output"]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8354, 244, 47, 0, 24, "Subsubsection"],
-Cell[8404, 246, 239, 5, 56, "Text"],
-Cell[8646, 253, 360, 9, 59, "Code"],
-Cell[9009, 264, 316, 9, 74, "Code"]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9374, 279, 37, 0, 34, "Subsection"],
-Cell[9414, 281, 345, 8, 43, "Code"]
-}, Open  ]]
-}, Open  ]]
-}, Open  ]]
-}
-]
-*)
-
-(* End of internal cache information *)
