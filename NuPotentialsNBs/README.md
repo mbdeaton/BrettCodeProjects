@@ -14,7 +14,7 @@ Several versions exist, for calculations from different inputs.
   This if for computing V_nunu and V_e from ray tracing output and
   Rebecca Surman's phenomenological wind model.
 
-# Version control for Notebooks
+### Version control for Notebooks
 
 For a discussion about versioning Mathematica Notebooks, see
 [this stackexchange thread](http://mathematica.stackexchange.com/questions/11258/are-there-suitable-versioning-systems-for-mathematica-notebooks).
@@ -31,7 +31,7 @@ After the initial purge (done when I migrate an existing Notebook to a version
 control system), I subsequently only perform step (4) before I commit or diff
 changes to a Notebook.
 
-# Using the Notebooks
+### Using the Notebooks
 When I want to compute V_nunu, I
 
 1. Copy the relevant Notebooks, `nu_and_matter_potentials*.nb` and
@@ -45,7 +45,7 @@ Output from the computation is in `*out` and `*pdf`.
 Note: if I wish to change some input and reevaluate the Notebook, I purge the
 memory first ("Evaluation"->"Quit Kernel").
 
-# ToDo
+### ToDo
 These items need work
 
 * Nothing right now.
