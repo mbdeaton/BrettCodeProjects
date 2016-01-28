@@ -15,6 +15,6 @@ Any code/computing references and any early attempts and experiments
 (2010-).
 
 __NuPotentialsNBs__.
-Mathematica notebooks for computing potentials that comprise the neutrino
+Mathematica notebooks for computing potentials that go into the neutrino
 flavor Hamiltonian (2015-2016).
 
