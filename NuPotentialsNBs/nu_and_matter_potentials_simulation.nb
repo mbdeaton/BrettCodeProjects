@@ -1788,30 +1788,43 @@ Cell["Stylings for Datasets", "Subsubsection"],
 Cell[BoxData[{
  RowBox[{
   RowBox[{"VnuiStyles", "=", 
-   RowBox[{"Table", "[", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"RGBColor", "[", 
       RowBox[{
-       FractionBox["i", "19"], ",", 
+       FractionBox["i", 
+        RowBox[{"numqBins", "-", "1"}]], ",", 
        RowBox[{"1", "-", 
-        FractionBox["i", "19"]}], ",", 
+        FractionBox["i", 
+         RowBox[{"numqBins", "-", "1"}]]}], ",", 
        RowBox[{"1", "-", 
-        FractionBox["i", "19"]}]}], "]"}], ",", 
+        FractionBox["i", 
+         RowBox[{"numqBins", "-", "1"}]]}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
      RowBox[{"{", 
-      RowBox[{"i", ",", "1", ",", "19"}], "}"}]}], "]"}]}], 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"numqBins", "-", "1"}]}], "}"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"VnueStyle", "=", 
    RowBox[{"Directive", "[", 
     RowBox[{
-     RowBox[{"Darker", "[", "Red", "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{
+       FractionBox["166", "255"], ",", 
+       FractionBox["206", "255"], ",", 
+       FractionBox["227", "255"]}], "]"}], ",", 
      RowBox[{"PointSize", "[", "Small", "]"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"VnuaStyle", "=", 
    RowBox[{"Directive", "[", 
     RowBox[{
-     RowBox[{"Darker", "[", "Cyan", "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{
+       FractionBox["31", "255"], ",", 
+       FractionBox["120", "255"], ",", 
+       FractionBox["180", "255"]}], "]"}], ",", 
      RowBox[{"PointSize", "[", "Small", "]"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -1819,35 +1832,61 @@ Cell[BoxData[{
    RowBox[{"VnuStyle", "=", 
     RowBox[{"Directive", "[", 
      RowBox[{
-      RowBox[{"Darker", "[", "Yellow", "]"}], ",", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{
+        FractionBox["178", "255"], ",", 
+        FractionBox["223", "255"], ",", 
+        FractionBox["138", "255"]}], "]"}], ",", 
       RowBox[{"PointSize", "[", "Medium", "]"}]}], "]"}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"\[CurlyRho]Style", "=", 
    RowBox[{"Directive", "[", 
     RowBox[{
-     RowBox[{"Lighter", "[", "Orange", "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{
+       FractionBox["251", "255"], ",", 
+       FractionBox["154", "255"], ",", 
+       FractionBox["153", "255"]}], "]"}], ",", 
      RowBox[{"PointSize", "[", "Small", "]"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"YeStyle", "=", 
    RowBox[{"Directive", "[", 
     RowBox[{
-     RowBox[{"Lighter", "[", "Blue", "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{
+       FractionBox["227", "255"], ",", 
+       FractionBox["26", "255"], ",", 
+       FractionBox["28", "255"]}], "]"}], ",", 
      RowBox[{"PointSize", "[", "Small", "]"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"VeStyle", "=", 
    RowBox[{"Directive", "[", 
     RowBox[{
-     RowBox[{"Blend", "[", 
+     RowBox[{"RGBColor", "[", 
       RowBox[{
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"Lighter", "[", "Orange", "]"}], ",", 
-         RowBox[{"Lighter", "[", "Blue", "]"}]}], "}"}], ",", "0.5"}], "]"}], 
-     ",", 
+       FractionBox["51", "255"], ",", 
+       FractionBox["160", "255"], ",", 
+       FractionBox["44", "255"]}], "]"}], ",", 
      RowBox[{"PointSize", "[", "Medium", "]"}]}], "]"}]}], ";"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", "\[IndentingNewLine]", 
+  RowBox[{"Transpose", "[", 
+   RowBox[{"{", 
+    RowBox[{"VnuiStyles", ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Disk", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"0.6", "*", "i"}], ",", "0"}], "}"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"numqBins", "-", "1"}]}], "}"}]}], "]"}]}], "}"}], "]"}], 
+  "\[IndentingNewLine]", "]"}]], "Input"],
 
 Cell[BoxData[
  RowBox[{"Graphics", "[", "\[IndentingNewLine]", 
@@ -1879,7 +1918,7 @@ Cell[BoxData[
        RowBox[{"7", ",", "0"}], "}"}], "]"}]}], "\[IndentingNewLine]", "}"}], 
    ",", "\[IndentingNewLine]", 
    RowBox[{"ImageSize", "\[Rule]", "Small"}]}], "]"}]], "Input"]
-}, Closed]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
