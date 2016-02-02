@@ -756,7 +756,7 @@ i,j,k indices correspond to q, cosA, B, and the l index picks one of \
  Cell[BoxData[
   FormBox[
    RowBox[{"B", "\[Element]", 
-    RowBox[{"[", 
+    RowBox[{"(", 
      RowBox[{"0", ",", 
       RowBox[{"2", "\[Pi]"}]}], ")"}]}], TraditionalForm]]],
  ". (Although ",
@@ -776,7 +776,7 @@ i,j,k indices correspond to q, cosA, B, and the l index picks one of \
    RowBox[{
     SubscriptBox["p", "t"], "\[Element]", 
     RowBox[{"(", 
-     RowBox[{"qMinMeV", ",", "qMaxMeV"}], "]"}]}], TraditionalForm]]],
+     RowBox[{"qMinMeV", ",", "qMaxMeV"}], ")"}]}], TraditionalForm]]],
  ".\nNote, these bounds are exactly those specified when running the \
 ComputeDistribFunction code (which are not the actual min/max values in the \
 table).\nFrom the bounds we compute \[CapitalDelta]q, \[CapitalDelta]cosA, \
@@ -968,7 +968,7 @@ Cell[BoxData[
   RowBox[{"Vnuerg", "[", "Vnuierg_", "]"}], ":=", 
   RowBox[{"Total", "[", "Vnuierg", "]"}]}]], "Input"]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1012,8 +1012,8 @@ Cell[TextData[{
  Cell[BoxData[
   FormBox[
    RowBox[{"q", "\[Element]", 
-    RowBox[{"[", 
-     RowBox[{"qMinMeV", ",", "qMaxMeV"}], "]"}]}], TraditionalForm]]],
+    RowBox[{"(", 
+     RowBox[{"qMinMeV", ",", "qMaxMeV"}], ")"}]}], TraditionalForm]]],
  " MeV\n",
  Cell[BoxData[
   FormBox[
@@ -1024,7 +1024,7 @@ Cell[TextData[{
  Cell[BoxData[
   FormBox[
    RowBox[{"B", "\[Element]", 
-    RowBox[{"[", 
+    RowBox[{"(", 
      RowBox[{"0", ",", 
       RowBox[{"2", "\[Pi]"}]}], ")"}]}], TraditionalForm]]]
 }], "Text"],
@@ -1059,8 +1059,10 @@ array, fnu, represents f(",
  Cell[BoxData[
   FormBox[
    SubscriptBox["p", "t"], TraditionalForm]]],
- ",A,B), then\nf(qMin MeV, cosAMin, BMin) = fnu[1,1,1,3], or\nf(qMax MeV, \
-cosAMin+\[CapitalDelta]cosA, BMin) = fnu[20,2,1,3]"
+ ",A,B), then\nf(qMin+0.5\[CapitalDelta]q MeV, \
+cosAMin+0.5\[CapitalDelta]cosA, Bmin+0.5\[CapitalDelta]B) = fnu[1,1,1,3], or\n\
+f(qMax-0.5\[CapitalDelta]q MeV, cosAMin+1.5\[CapitalDelta]cosA, BMin+0.5\
+\[CapitalDelta]B) = fnu[20,2,1,3]"
 }], "Text"],
 
 Cell[BoxData[
@@ -1169,7 +1171,7 @@ Cell[BoxData[
         RowBox[{"ByteCount", "[", "fnuas", "]"}]}], ")"}], "/", 
       RowBox[{"2.", "^", "20"}]}], "]"}], "<>", "\[IndentingNewLine]", 
     "\"\< MB used to store fs.\>\""}], "]"}], ";"}]], "Input"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
