@@ -84,7 +84,21 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"orientPretty", "=", "False"}], ";"}], "\n", 
  RowBox[{
-  RowBox[{"findBestPointing", "=", "False"}], ";"}]}], "Code"],
+  RowBox[{"findBestPointing", "=", "False"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"assumeBSymmetry", "=", "False"}], ";", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"assume", " ", "f", 
+     RowBox[{"(", 
+      RowBox[{"-", "B"}], ")"}]}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"f", 
+       RowBox[{"(", "B", ")"}]}], " ", "&&", " ", "Bmin"}], "=", 
+     RowBox[{
+      RowBox[{"0", " ", "&&", " ", "Bmax"}], "=", "\[Pi]"}]}]}], " ", 
+   "*)"}]}]}], "Code"],
 
 Cell[BoxData[{
  RowBox[{
@@ -231,3 +245,4 @@ TrackCellChangeTimes->False,
 FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
 StyleDefinitions->"Default.nb"
 ]
+

@@ -83,11 +83,11 @@ cosAMins\t\t\t\ta list of ",
    SubscriptBox[
     RowBox[{"(", 
      RowBox[{"cos", " ", "A"}], ")"}], "max"], TraditionalForm]]],
- ", usually {1,1,...}\norientPretty\nfindBestPointing\nrTocmDirName\t\t\t\
-conversion factor to take r to cm\n\nobservationDirectories\nradiicm\n\
-numObservations\n\nnumTopCommentLinesFern\nnumColumnsFern\nrMinFerncm\n\
-rMaxFerncm\nnumrBinsFern\nrTocmFern\t\t\t\tconversion factor to take r to cm\t\
-\t\t\t"
+ ", usually {1,1,...}\norientPretty\nfindBestPointing\nassumeBSymmetry\t\t\t\
+assume f(-B)=f(B) AND Bmin=0 AND Bmax=\[Pi]\nrTocmDirName\t\t\tconversion \
+factor to take r to cm\n\nobservationDirectories\nradiicm\nnumObservations\n\n\
+numTopCommentLinesFern\nnumColumnsFern\nrMinFerncm\nrMaxFerncm\nnumrBinsFern\n\
+rTocmFern\t\t\t\tconversion factor to take r to cm\t\t\t\t"
 }], "Text"]
 }, Open  ]],
 
@@ -331,7 +331,7 @@ Cell[BoxData[{
 
 Cell[CellGroupData[{
 
-Cell["Units in other Systems", "Subsubsection"],
+Cell["Units in other systems", "Subsubsection"],
 
 Cell[BoxData[{
  RowBox[{"ccgs", "=", 
@@ -350,8 +350,44 @@ Cell[BoxData[{
    RowBox[{"(*", " ", 
     FractionBox["cm", "MeV"], " ", "*)"}]}]}]}], "Input",
  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Error checking on input", "Subsubsection"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Length", "[", "cosAMins", "]"}], "\[NotEqual]", 
+     RowBox[{"Length", "[", "cosAMaxs", "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+    "PrintToStatusFile", "[", 
+     "\"\<Error: cosAMins has more elements than cosAMaxs.\>\"", "]"}]}], 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Length", "[", "cosAMins", "]"}], "\[NotEqual]", 
+     "numObservations"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+    "PrintToStatusFile", "[", 
+     "\"\<Error: there are more elements in cosAMins than there are \
+observation directories.\>\"", "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"assumeBSymmetry", " ", "&&", "findBestPointing"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+    "PrintToStatusFile", "[", 
+     "\"\<Error: We can't use symmetry in B if findBestPointing==True.\>\"", 
+     "]"}]}], "]"}], ";"}]}], "Input"]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -388,7 +424,7 @@ Cell[BoxData[{
     RowBox[{"\[Delta]m32eV2", "*", 
      SuperscriptBox["eVToMeV", "2"]}], 
     RowBox[{"2", "qMeV"}]], "MeVToerg"}]}]}], "Input"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -537,7 +573,7 @@ Cell[BoxData[
        "\[IndentingNewLine]", "]"}], "]"}]}], "\[IndentingNewLine]", 
     "]"}]}]}]], "Input"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -745,7 +781,8 @@ i,j,k indices correspond to q, cosA, B, and the l index picks one of \
 ",
  Cell[BoxData[
   FormBox["B", TraditionalForm]]],
- " angles) at zenith given by ",
+ " angles, or half of B angles if assumeBSymmetry==true) at zenith given by \
+",
  Cell[BoxData[
   FormBox[
    RowBox[{"A", "\[Element]", 
@@ -759,18 +796,14 @@ i,j,k indices correspond to q, cosA, B, and the l index picks one of \
     RowBox[{"(", 
      RowBox[{"0", ",", 
       RowBox[{"2", "\[Pi]"}]}], ")"}]}], TraditionalForm]]],
- ". (Although ",
+ " (or ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["B", 
-    RowBox[{"{", 
-     RowBox[{"min", ",", "max"}], "}"}]], TraditionalForm]]],
- " don't matter in this calculation, only ",
- Cell[BoxData[
-  FormBox[
-   RowBox[{"\[CapitalDelta]B", "=", 
-    RowBox[{"2", "\[Pi]"}]}], TraditionalForm]]],
- ".)\n- spans the asymptotic energies ",
+   RowBox[{"B", "\[Element]", 
+    RowBox[{"(", 
+     RowBox[{"0", ",", "\[Pi]"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " if assumeBSymmetry==true).\n- spans the asymptotic energies ",
  Cell[BoxData[
   FormBox[
    RowBox[{
@@ -828,8 +861,12 @@ Cell[BoxData[
         RowBox[{"cosAMax", "-", "cosAMin"}], "NA"]}], ",", 
       "\[IndentingNewLine]", 
       RowBox[{"\[CapitalDelta]B", "=", 
-       FractionBox[
-        RowBox[{"2", "\[Pi]"}], "NB"]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{"assumeBSymmetry", ",", 
+         FractionBox["\[Pi]", "NB"], ",", 
+         FractionBox[
+          RowBox[{"2", "\[Pi]"}], "NB"]}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
       RowBox[{"returnArray", "=", 
        RowBox[{"ConstantArray", "[", 
         RowBox[{
@@ -917,6 +954,8 @@ Cell[BoxData[
           "]"}]}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
      RowBox[{"returnArray", "*=", 
       RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{"assumeBSymmetry", ",", "2", ",", "1"}], "]"}], "*", 
        FractionBox[
         RowBox[{
          SqrtBox["2"], "GFNat"}], 
@@ -1026,7 +1065,14 @@ Cell[TextData[{
    RowBox[{"B", "\[Element]", 
     RowBox[{"(", 
      RowBox[{"0", ",", 
-      RowBox[{"2", "\[Pi]"}]}], ")"}]}], TraditionalForm]]]
+      RowBox[{"2", "\[Pi]"}]}], ")"}]}], TraditionalForm]]],
+ ", or ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{"0", ",", "\[Pi]"}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " if assumeBSymmetry==True"
 }], "Text"],
 
 Cell[BoxData[{
@@ -1366,7 +1412,7 @@ For now, just look at an average energy of, I don't know, 10 MeV.\
 Cell[BoxData[{
  RowBox[{"Vv21erg", "[", "10", "]"}], "\[IndentingNewLine]", 
  RowBox[{"Vv32erg", "[", "10", "]"}]}], "Input"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1377,7 +1423,7 @@ Cell[BoxData[
   RowBox[{"VeergFern", "=", 
    RowBox[{"VeergList", "[", 
     RowBox[{"\[CurlyRho]Fern", ",", "YeFern"}], "]"}]}], ";"}]], "Input"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1441,7 +1487,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"Transpose", "[", "VnuiPointserg", "]"}], "//", 
   "TableForm"}]}], "Input"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
