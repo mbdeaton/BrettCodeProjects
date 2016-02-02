@@ -14,7 +14,7 @@ Cell["Set these variables different for each trajectory", "Section"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"trajectoryThetadeg", "=", "0"}], ";"}], "\n", 
+  RowBox[{"trajectoryThetadeg", "=", "45"}], ";"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"trajectoryName", "=", 
