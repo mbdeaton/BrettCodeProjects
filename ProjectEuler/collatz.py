@@ -50,19 +50,24 @@ def main():
                    help = "int: maximum input N, so the search range is [2,N]")
     p.add_argument("-every", default=None, metavar="M", type=int,
                    help = "int: print every M sequences searched")
+    p.add_argument("-sample", default=None, metavar="S", type=int,
+                   help = "int: print sequence starting with this input")
     args = p.parse_args()
     
-    input_max = 1
-    max_length = 1
-
-    for i in range(1,args.max+1):
-        seq = CollatzSequence(i)
-        if max_length<len(seq):
-            input_max=i
-            max_length=len(seq)
-        if not i%args.every:
-            print format( len(seq), ">6d"), ": ", seq
-    print "Longest sequence ( length =", max_length, ") starts with n =", input_max
+    if args.sample is not None:
+        seq = CollatzSequence(args.sample)
+        print format( len(seq), ">6d"), ": ", seq
+    else:
+        input_max = 1
+        max_length = 1
+        for i in range(1,args.max+1):
+            seq = CollatzSequence(i)
+            if max_length<len(seq):
+                input_max=i
+                max_length=len(seq)
+            if args.every is not None and not i%args.every:
+                print format( len(seq), ">6d"), ": ", seq
+        print "Longest sequence ( length =", max_length, ") starts with n =", input_max
 
     exit(0) # no error on exit
 
