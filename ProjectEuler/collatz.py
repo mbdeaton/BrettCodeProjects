@@ -18,6 +18,8 @@ class CollatzFunction:
     """
     def __init__(self, k):
         r"""Set number of iterations, k"""
+        if k!=1:
+            sys.exit("Error: only coded value of k is 1.")
         if k<1 or not isinstance(k,int):
             sys.exit("Error: k must be a positive integer.")
         else: 
@@ -34,10 +36,12 @@ def CollatzSequence(n):
     r"""Collatz sequence starting with input n, ending with 1."""
     seq = [n]
     func = CollatzFunction(k=1)
-    # only compute next term if last term isn't a power of 2
+    # Only compute next term if last term isn't a power of 2.
+    # frexp returns [man,exp] defining a number in base 2 as man*2^exp,
+    # where mantissa is a number \in [0.5,1], and exponent is an integer.
     while seq[-1]!=1 and math.frexp(seq[-1])[0]!=0.5:
         seq.append( func.next(seq[-1]) )
-    # compute remaining trajectory which is powers of two
+    # Compute remaining terms in sequence, all powers of two.
     while seq[-1]!=1:
         seq.append( int(seq[-1]/2) )
     return seq
@@ -54,9 +58,11 @@ def main():
                    help = "int: print sequence starting with this input")
     args = p.parse_args()
     
+    # Either print the sequence starting at sample S
     if args.sample is not None:
         seq = CollatzSequence(args.sample)
         print format( len(seq), ">6d"), ": ", seq
+    # or find the longest sequence with initial values less than max N
     else:
         input_max = 1
         max_length = 1
