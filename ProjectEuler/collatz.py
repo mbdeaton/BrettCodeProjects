@@ -11,36 +11,38 @@ import numpy as np
 import sys
 
 class CollatzFunction:
-    r"""Collatz Function T(k;n).
+    r"""Collatz Function T(1;n).
 
-    T(k;n) = k applications { n/2    n even
-                            { 3n+1   n odd
+    T(k;n) = k applications of { n/2    n even
+                               { 3n+1   n odd
     """
-    def __init__(self, k):
-        r"""Set number of iterations, k"""
-        if k!=1:
-            sys.exit("Error: only coded value of k is 1.")
-        if k<1 or not isinstance(k,int):
-            sys.exit("Error: k must be a positive integer.")
+    def __init__(self,n):
+        r"""Set initial number, n"""
+        if n <= 1:
+            sys.exit("Error: you must initialize n>1.")
+        if not isinstance(n,int):
+            sys.exit("Error: n must be an integer.")
         else: 
-            self.k=k
-    def next(self, n):
+            self.n=n
+    def __iter__(self):
+        return self
+    def __next__(self):
         r"""Return next number in the sequence"""
-        if n%2:
-            next = 3*n+1
+        if self.n%2:
+            self.n = 3*self.n+1
         else:
-            next = n/2
-        return next
+            self.n = self.n/2
+        return self.n
 
 def CollatzSequence(n):
     r"""Collatz sequence starting with input n, ending with 1."""
     seq = [n]
-    func = CollatzFunction(k=1)
+    func = iter( CollatzFunction(n) )
     # Only compute next term if last term isn't a power of 2.
     # frexp returns [man,exp] defining a number in base 2 as man*2^exp,
-    # where mantissa is a number \in [0.5,1], and exponent is an integer.
+    # where mantissa is a double \in [0.5,1], and exponent is an integer.
     while seq[-1]!=1 and math.frexp(seq[-1])[0]!=0.5:
-        seq.append( func.next(seq[-1]) )
+        seq.append( next(func) )
     # Compute remaining terms in sequence, all powers of two.
     while seq[-1]!=1:
         seq.append( int(seq[-1]/2) )
