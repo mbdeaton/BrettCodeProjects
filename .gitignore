@@ -1,6 +1,7 @@
 # Build products
 *.o
 *.a
+*.pyc
 
 # TeX products
 *.aux
