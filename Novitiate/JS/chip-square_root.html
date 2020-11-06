@@ -1,0 +1,88 @@
+<html>
+<!--This is the start of the css section. Css requires a style start and end tags to encompass all the hard coded styles. 
+# before the name is an id tag in HTML
+. before the name is a class tag in HTML
+-->
+<style>
+#ring {
+	position: fixed;
+		left:30vw;
+		top: 10vh;
+		border: 3px solid black;
+		width: 35vw;
+		height: 50vh;
+		text-align:center;
+}
+</style>
+<!--
+this is a comment in HTML it has an open tag but also needs to have a closed tag
+-->
+<body onload="Axis()">
+<canvas id="ring" width="700" height="700">
+</canvas>
+<button id="testbutton" onclick="Run()">test button</button>
+</body>
+
+<script>
+//this is a comment using only on line
+
+/*
+this is a comment that can be 
+used on multiple line however it will also need closed to 
+make sure that everything is not commented out
+*/
+
+//Javascript requires a script open and close tag to to be recognized as javascript
+var canvas = document.getElementById("ring");
+var pencil = canvas.getContext("2d");
+var i=-1000;
+var yorigin=5;
+var xorigin=5;
+var zorigin=10;
+console.log("hello");
+function Run(){
+	while (i<1000){
+		Squareroot(i);
+		i++
+	}
+}
+function Squareroot(a){
+				if (a>1){
+					var input1=Math.sqrt(a/100);
+					var input2=0-input1;
+					Draw(xorigin+a/100,input1+yorigin, zorigin);
+					Draw(xorigin+a/100, input2+yorigin, zorigin);
+				}else if (a<1){
+					var input1=Math.sqrt(-a/100);
+					var input2=-input1;
+					Draw(xorigin+a/100,yorigin,input1+zorigin);
+					Draw(xorigin+a/100,yorigin,input2+zorigin);
+				}else{
+					Draw(xorigin+a, yorigin, zorigin)
+					Draw(xorigin+a, yorigin, zorigin)
+				}
+				
+}
+
+function Draw(a,b,c){
+	pencil.beginPath();
+	pencil.moveTo(((350+(100*(a)/c))), ((350+(100*(b)/c))));
+	pencil.lineTo((((350+(100*(a)/c)))+1),((350+100*(b)/c))+1);
+	pencil.stroke(); 
+	pencil.closePath();	
+
+
+}
+function Axis(){
+var k=-10000
+	while (k<10000){
+		Draw(xorigin,yorigin,k/100);
+		Draw(xorigin,k/100,zorigin);
+		Draw(k/100,yorigin,zorigin);
+		
+		k++
+	}
+}
+</script>
+
+</html>

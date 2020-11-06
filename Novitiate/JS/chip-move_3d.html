@@ -1,0 +1,86 @@
+<html>
+<!--style tags-->
+<style>
+.box{
+	position:fixed;
+	outline: solid black .1vw;
+	background-color: white;
+	left: 40vw;
+	top: 17vw;
+	width: 10vw;
+	height: 10vw;
+	z-index: 100;
+}
+.horizon{
+	position:fixed;
+	background-color: black;
+	left: -2vw;
+	top: 25vw;
+	width: 105vw;
+	height: .1vw;
+	z-index: -1;
+}
+</style>
+<!--body regesters key strokes. divs are what you see-->
+<body onkeydown="GetThatKey(event)">
+<p>use arrow keys to move arround</p>
+<div id="themovingbox" class="box" style="z-index: 100;"></div>
+<div class="horizon"></div>
+<!--debugging output that i use to get info on how the program is working
+<p id="key"></p>
+-->
+</body>
+<script>
+//gets the key user presses
+function GetThatKey(a){
+	var thekey=a.key;
+	//document.getElementById("key").innerHTML=thekey;
+	GetElementInformation("themovingbox", thekey);
+}
+//moves the square on the screen around
+function GetElementInformation(a, b){
+	var x = document.getElementById(a).offsetLeft;
+	var y = document.getElementById(a).offsetTop;
+	var z = document.getElementById(a).style.zIndex;
+	var itemwidth = document.getElementById(a).offsetWidth;
+	var itemheight= document.getElementById(a).offsetHeight;
+	z=parseInt(z);
+	var windowsize = window.innerWidth;
+	x=100*x/windowsize;
+	y=100*y/windowsize;
+	x=x-50;
+	y=y-25;
+	x=windowsize*x/100;
+	y=windowsize*y/100;
+	itemwidth=itemwidth*100/windowsize;
+	itemheight=itemheight*100/windowsize;
+	x=x*z;
+	y=y*z;
+	var z1=z;
+	if (b=="ArrowUp"){
+		z=z-1;
+		if (z==0){
+			z=1;
+		}
+	}else if (b=="ArrowDown"){
+		z=z+1;
+	}else if (b=="ArrowLeft"){
+		x=x+100;
+	}else if (b=="ArrowRight"){
+		x=x-100;
+	}
+	x=x/z
+	x=100*x/windowsize;
+	itemwidth=itemwidth*z1/z;
+	itemheight=itemheight*z1/z;
+	x=x+50;
+	y=y/z
+	y=100*y/windowsize;
+	y=y+25;
+	document.getElementById(a).style="position: fixed; top: "+y+"vw; left: "+x+"vw; z-index: "+z+"; width: "+itemwidth+"vw; height: "+itemheight+"vw;";
+	//debugging tool
+	//document.getElementById("key").innerHTML="x="+x+"vw;<br>y="+y+"vw<br>z="+z+"<br> width= "+itemwidth+"<br> height= "+itemheight;
+}
+
+</script>
+</html>
