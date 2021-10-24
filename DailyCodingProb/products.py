@@ -43,8 +43,7 @@ def products_no_div(alist):
     return rlist
 
 
-
-class TestProductList(unittest.TestCase):
+class TestProducts(unittest.TestCase):
 
     def examples(self, f):
         """"Base test function"""

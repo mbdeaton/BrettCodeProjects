@@ -15,7 +15,7 @@ def find_sum(asum, alist):
     return False
 
 
-class TestPartitionSearch(unittest.TestCase):
+class TestFindSum(unittest.TestCase):
 
     def test_example(self):
         a = [10, 15, 3, 7]
