@@ -6,4 +6,4 @@ email list, arranged in the order they were sent.
 
 1. `find_sum.py`
 2. `products.py`
-3. `serial_tree.py`
+3. `bintree_serialize.py`
