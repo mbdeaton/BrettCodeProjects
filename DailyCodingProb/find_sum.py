@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.8
+#!/usr/bin/env python3
 """Daily Coding Problem 1.
 Given a list of numbers and a number k, return whether two numbers in the list
 sum to k.

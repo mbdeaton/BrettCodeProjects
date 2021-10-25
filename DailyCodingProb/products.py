@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.8
+#!/usr/bin/env python3
 """Daily Coding Problem 2.
 Given a list of integers, return a new list such that the i-th element is
 the product of all the other elements except the i-th element from the original
