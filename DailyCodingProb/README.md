@@ -7,4 +7,4 @@ email list, arranged in the order they were sent.
 1. `find_sum.py`
 2. `products.py`
 3. `bintree_serialize.py`
-4. `find_missing_int.py`
+4. `find_missing_int.py` [incomplete]
