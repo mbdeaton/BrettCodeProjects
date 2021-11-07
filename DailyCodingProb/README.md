@@ -8,3 +8,4 @@ email list, arranged in the order they were sent.
 2. `products.py`
 3. `bintree_serialize.py`
 4. `find_missing_int.py` [incomplete]
+5. `pairs.py`
