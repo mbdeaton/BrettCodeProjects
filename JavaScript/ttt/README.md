@@ -5,6 +5,8 @@ Folowing the learn-by-doing
 [tic-tac-toe tutorial](https://reactjs.org/tutorial/tutorial.html)
 at reactjs.org.
 
+On 11.7.21 I got to "Completing the Game" > "Function Components".
+
 ## Getting Started with Create React App
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
