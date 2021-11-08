@@ -1,12 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
+
   render() {
+    let i = this.props.value
     return (
-      <button className="square">
-        {/* TODO */}
+      <button className='square' onClick={ () => console.log(`clicked ${i}`) }>
+        {i}
       </button>
     );
   }
@@ -14,7 +23,7 @@ class Square extends React.Component {
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square />;
+    return <Square value={i} />;
   }
 
   render() {
@@ -22,13 +31,13 @@ class Board extends React.Component {
 
     return (
       <div>
-        <div className="status">{status}</div>
+        <div className='status'>{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
         </div>
-        <div className="board-row">
+        <div className='board-row'>
           {this.renderSquare(3)}
           {this.renderSquare(4)}
           {this.renderSquare(5)}
