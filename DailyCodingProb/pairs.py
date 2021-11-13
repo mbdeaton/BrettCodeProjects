@@ -30,4 +30,4 @@ class TestPairs(unittest.TestCase):
         self.assertTrue( cdr(cons("a","b"))=="b" )
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
