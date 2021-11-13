@@ -6,12 +6,21 @@ the xor of next and prev nodes.
 
 import unittest
 
+def get_pointer(node):
+    return id(node)
+
+def dereference_pointer(address):
+    return None
+
 class Xlist():
     """A doubly-linked list, implemented with xor of next and prev."""
     def __init__(self):
         self.elements = {}
+
     def add(self, element):
-        self.elements[0] = element
+        index = get_pointer(element)
+        self.elements[index] = element
+
     def get(self, index):
         return self.elements[index]
 
@@ -23,10 +32,13 @@ class TestXlist(unittest.TestCase):
         with self.assertRaises(KeyError):
             lista.get(0)
 
-    def test_single(self):
+    def test_adding_elements(self):
         lista = Xlist()
         lista.add("the")
+        lista.add("quick")
         self.assertEqual(lista.get(0), "the")
+        self.assertEqual(lista.get(1), "quick")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
