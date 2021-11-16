@@ -19,6 +19,9 @@
 Thumbs.db
 Icon?
 
+# Hidden files
+.vscode
+
 # Compressed packages
 *.gz
 *.dmg
