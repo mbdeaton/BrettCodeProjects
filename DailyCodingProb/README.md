@@ -10,3 +10,7 @@ email list, arranged in the order they were sent.
 4. `find_missing_int.py` [incomplete]
 5. `pairs.py`
 6. `list_xor.py`
+
+...
+
+38. `n_queens.py`
