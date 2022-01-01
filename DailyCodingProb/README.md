@@ -13,4 +13,8 @@ email list, arranged in the order they were sent.
 
 ...
 
+16. `record_n_orders.py`
+
+...
+
 38. `n_queens.py`
