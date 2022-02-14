@@ -3,6 +3,9 @@ A repository for small-scale code projects.
 
 ### Overview
 
+__Arduino__.
+Personal microcontroller projects (from Spring 2022).
+
 __AstroFluids__.
 Code projects from Matt Duez's astrophysical fluids class (Fall 2011).
 
