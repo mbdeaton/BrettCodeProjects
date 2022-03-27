@@ -18,3 +18,7 @@ email list, arranged in the order they were sent.
 ...
 
 38. `n_queens.py`
+
+...
+
+142. `parens_balanced.py`
