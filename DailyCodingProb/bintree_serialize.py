@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Daily Coding Problem 3.
+
 Transform a binary tree back and forth from a serial string representation.
 """
 
 import unittest
+
 
 class Node:
     """Fundamental node for a binary tree"""

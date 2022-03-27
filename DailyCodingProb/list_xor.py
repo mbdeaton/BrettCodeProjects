@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 """Daily Coding Problem 6.
+
 Implement a doubly-linked list, storing only a single address,
 the xor of next and prev nodes.
 """
 
+
 import unittest
+
 
 def get_pointer(node):
     return id(node)
 
+
 def dereference_pointer(address):
     return None
+
 
 class Xlist():
     """A doubly-linked list, implemented with xor of next and prev."""

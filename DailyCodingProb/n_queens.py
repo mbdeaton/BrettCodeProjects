@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Daily Coding Problem 38.
+
 Count the number of unique configurations of n nonattacking queens on an n*n
 chess board. See [OEIS A000170](https://oeis.org/A000170).
 """
+
 
 from random import randrange
 from string import ascii_lowercase
@@ -226,12 +228,14 @@ class NQueensConfig:
         for row in reversed(range(self.n)):
             print(' '.join("Q" if q==row else "." for q in self.queens))
 
+
 class TestNQueens(unittest.TestCase):
 
     def test_total_num_valid_configs(self):
         calct = [NQueensConfig(n).num_nonattacking_configs() for n in range(10)]
         expct = [1, 1, 0, 0, 2, 10, 4, 40, 92, 352]
         self.assertEqual(calct, expct)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

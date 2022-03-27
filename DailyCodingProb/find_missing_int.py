@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Daily Coding Problem 4.
+
 Given a list of integers, find the smallest whole number missing from the list.
 """
 
@@ -33,7 +34,7 @@ def find_missing_int_quick(alist):
     return None
 
 
-class TestFindSum(unittest.TestCase):
+class TestFindMissingInt(unittest.TestCase):
     def test_examples(self):
         self.assertTrue( find_missing_int([3, 4, -1, 1]) == 2 )
         self.assertTrue( find_missing_int([1, 2, 0]) == 3 )

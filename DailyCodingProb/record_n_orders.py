@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Daily Coding Problem 16.
+
 Implement an order record of fixed size, retaining no more than N orders.
 """
 
+
 import unittest
+
 
 class OrderRecord:
     """A capped-length queue of order ids."""
+
     def __init__(self, max_orders=10):
         self.max_orders = max_orders
         self.orders = [] # queue with oldest at the front
@@ -24,6 +28,7 @@ class OrderRecord:
 
     def __repr__(self):
         return str(self.orders)
+
 
 class TestRecordNOrders(unittest.TestCase):
     def test_create_blank_record(self):
@@ -45,6 +50,7 @@ class TestRecordNOrders(unittest.TestCase):
         self.assertEqual(orders.get_last(), ids[-1]) # check newest
         self.assertEqual(orders.get_last(max_orders-1), # check oldest
                          ids[extra_orders])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
