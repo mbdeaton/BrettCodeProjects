@@ -16,7 +16,7 @@ __DailyCodingProb__.
 Solutions to problems from the
 [Daily Coding Problem](https://www.dailycodingproblem.com) email list.
 
-__JavaScript__.
+__WebApps__.
 Self-learning JavaScript projects (Fall 2021 ff).
 
 __Jupyter__.
