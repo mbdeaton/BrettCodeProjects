@@ -1,7 +1,7 @@
 {
-  "name": "simple_react",
+  "name": "simple_react_jsx",
   "version": "0.1.0",
-  "description": "A first attempt at a React app",
+  "description": "A first attempt at a React app employing JSX syntax",
   "main": "index.html",
   "scripts": {
     "start": "npm run lite",
