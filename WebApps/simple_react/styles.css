@@ -1,21 +1,21 @@
 body {
-    background-color: black;
-    color: whitesmoke;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: medium;
-    font-style: normal;
+  background-color: black;
+  color: whitesmoke;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: medium;
+  font-style: normal;
 }
 ul {
-    list-style: none;
+  list-style: none;
 }
 #nav {
-    background: lightgray;
-    overflow: auto;
+  background: lightgray;
+  overflow: auto;
 }
 #nav li {
-    float: left;
-    padding: 10px;
+  float: left;
+  padding: 10px;
 }
 #nav li:hover {
-    background: gray;
+  background: gray;
 }
