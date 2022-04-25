@@ -1,0 +1,12 @@
+{
+  "name": "simple_react_no_jsx",
+  "version": "0.1.0",
+  "description": "A first attempt at a React app without using JSX",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brett Deaton <brett.deaton@gmail.com>",
+  "license": "MIT"
+}
