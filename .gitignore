@@ -21,6 +21,7 @@ Icon?
 
 # Hidden files
 .vscode
+.ipynb_checkpoints
 
 # Compressed packages
 *.gz
