@@ -28,9 +28,5 @@ algorithm parameters (2012). This eventually turned into the production
 NeutrinoRayTracing code in the
 [Spectral Einstein Codebase](https://www.black-holes.org/code/SpEC.html).
 
-__Novitiate__.
-Any code/computing references and any early attempts and experiments
-(2010 ff).
-
 __ProjectEuler__.
 Solutions or attempts to [Project Euler](https://projecteuler.net) problems.
