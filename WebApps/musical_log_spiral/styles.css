@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  background: #333;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #DDD;
+  text-align: center;
+}
+
+h1 {
+  font-size: x-large;
+}
+
+#main-screen {
+  border: 2px #08F solid;
+  max-width: 450px;
+  border-radius: 5px;
+  margin: auto auto;
+}
+
+canvas#spiral-canvas {
+  background: whitesmoke;
+  border-radius: 5px;
+  margin: 20px;
+}
