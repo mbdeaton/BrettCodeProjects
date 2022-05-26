@@ -14,14 +14,20 @@ h1 {
 }
 
 #main-screen {
-  border: 2px #08F solid;
+  border: 2px gray solid;
   max-width: 450px;
   border-radius: 5px;
   margin: auto auto;
 }
 
-canvas#spiral-canvas {
+svg#spiral-canvas {
   background: whitesmoke;
-  border-radius: 5px;
   margin: 20px;
+  border-radius: 5px;
 }
+
+/* line.note-line {
+  stroke-width: '0.5px';
+  stroke-linecap: 'round';
+  stroke: 'gray';
+} */
