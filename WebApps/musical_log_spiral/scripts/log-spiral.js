@@ -30,7 +30,7 @@ function drawSpiral() {
   for (let i = 0; i < numSteps; i++) {
     const angle = i*angleStep + Math.PI/2;
     const radius = radiusStart * Math.exp(b*(angle-Math.PI/2));
-    const x = -radius*Math.cos(angle)+scale/2;
+    const x = radius*Math.cos(angle)+scale/2;
     const y = -radius*Math.sin(angle)+scale/2;
     ctx.lineTo(x, y);
     ctx.stroke();
