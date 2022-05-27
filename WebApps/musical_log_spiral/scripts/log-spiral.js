@@ -3,6 +3,20 @@ const scale = 100;
 const radius = 0.9*scale/2;
 c.setAttribute("viewBox", `${-scale/2} ${-scale/2} ${scale} ${scale}`)
 c.innerHTML += `<circle cx='0' cy='0' r='${radius}' fill='lightblue'/>`;
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playNote() {
+  const frequency = 261.626; // middle C, i.e. C4
+  const duration = 0.5;
+
+	// create Oscillator node
+	const oscillator = audioCtx.createOscillator();
+	
+	oscillator.frequency.value = frequency;
+	oscillator.connect(audioCtx.destination);
+	oscillator.start(0);
+	oscillator.stop(audioCtx.currentTime + duration);
+}
 
 function drawNoteLines() {
   const noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
