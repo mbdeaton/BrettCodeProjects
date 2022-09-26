@@ -16,13 +16,13 @@ function playNote() {
   const frequency = 261.626; // middle C, i.e. C4
   const duration = 0.5;
 
-	// create Oscillator node
-	const oscillator = audioCtx.createOscillator();
-	
-	oscillator.frequency.value = frequency;
-	oscillator.connect(audioCtx.destination);
-	oscillator.start(0);
-	oscillator.stop(audioCtx.currentTime + duration);
+  // create Oscillator node
+  const oscillator = audioCtx.createOscillator();
+
+  oscillator.frequency.value = frequency;
+  oscillator.connect(audioCtx.destination);
+  oscillator.start(0);
+  oscillator.stop(audioCtx.currentTime + duration);
 }
 
 function drawNoteLines() {
