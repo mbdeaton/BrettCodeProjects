@@ -46,6 +46,7 @@ function getDomMatrix() {
   return matrix;
 }
 
+// Play a note and place a dot representing the note on the svg.
 function playNote(evnt) {
   const matrix = getDomMatrix();
   const point = new DOMPoint(evnt.clientX, evnt.clientY);
@@ -65,6 +66,8 @@ function playNote(evnt) {
   oscillator.stop(audioCtx.currentTime + duration);
 }
 
+// Draw the 12 radii representing the 12 notes of the
+// chromatic scale.
 function drawNoteLines() {
   const noteNames = [
     "C",
@@ -108,12 +111,23 @@ function drawNoteLines() {
   }
 }
 
+// Draw the logarithmic spiral representing all frequencies.
+//   r = r_0 exp(b(theta-pi/2))
+// where
+//   r      coordinate radius, proportional the wavelength
+//   theta  counter-clockwise angle from positive y-axis, with
+//          larger theta representing lower notes
+//   b      rate constant forcing the spiral to double in radius
+//          every full rotation
+//   r_0    the principle radius, representing the key center
+// Details on this equation in `notes/notes-log_spiral-?.png`.
 function drawSpiral() {
   const b = Math.LN2 / 2 / Math.PI;
-  const centsPerStep = 25;
-  const numOctaves = 8;
-  const numSteps = (numOctaves * 1200) / centsPerStep;
-  const angleStep = (2 * Math.PI * centsPerStep) / 1200;
+  const centsPerStep = 25; // decrease for better spiral resolution
+  const numOctaves = 8; // how many octaves to display?
+  const centsPerOctave = 1200;
+  const numSteps = (numOctaves * centsPerOctave) / centsPerStep;
+  const angleStep = (2 * Math.PI * centsPerStep) / centsPerOctave;
   const radiusStart = scaleSvg / 400;
   let spiral = document.createElementNS(svgns, "path");
   spiral.id = "spiral";
