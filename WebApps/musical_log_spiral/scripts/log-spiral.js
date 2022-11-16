@@ -93,6 +93,13 @@ function drawSpiral() {
   svg.appendChild(spiral);
 }
 
+// Create the empty svg group containing the notes
+function insertNoteGroup() {
+  let noteGroup = document.createElementNS(svgns, "g");
+  noteGroup.id = "notes";
+  svg.appendChild(noteGroup);
+}
+
 // Play a note of given frequency (Hz) and duration (s).
 function playNote(frequency, duration = 0.5) {
   // create Oscillator node
@@ -140,7 +147,7 @@ function drawNote(radius) {
   dot.setAttribute("cy", `${y}`);
   dot.setAttribute("r", `${radiusDot}`);
   dot.setAttribute("fill", "orange");
-  svg.appendChild(dot);
+  noteGroup.appendChild(dot);
 }
 
 // Return the matrix M that translates DOM coords x to SVG coords x' using
@@ -207,3 +214,5 @@ const scaleSpeed = frequencyFundamental * radiusFundamental;
 drawMainDisc();
 drawNoteLines();
 drawSpiral();
+insertNoteGroup();
+const noteGroup = document.getElementById("notes");
