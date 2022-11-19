@@ -136,6 +136,32 @@ function coordsFromRadius(radius) {
   return [radius * Math.cos(psi), -radius * Math.sin(psi)]; // [x,y]
 }
 
+// return the Low or High point closest to x
+function snapToNearestPoints(x, [xLow, xHigh]) {
+  if (Math.abs(x - xLow) < Math.abs(x - xHigh)) {
+    return xLow;
+  } else {
+    return xHigh;
+  }
+}
+
+// Return the radius of the spiral having the same angle psi, and
+//   nearest the click radius rClick.
+// That is, given a click at (rClick, psi), first find the possible
+//   spiral radii having exactly that angle (r_1, r_2, r_3, ...),
+//   then return the spiral radius r_n that minimizes |rClick-r_n|.
+function spiralRadiusFromClickRadiusAndAngle(rClick, psi) {
+  console.log(`rclick: ${rClick}`); // DEBUG
+  const radiusMinAtThisAngle = radiusFromAngle(psi + Math.PI / 2);
+  const radiiBounding = [radiusMinAtThisAngle, radiusMinAtThisAngle * 2];
+  while (radiiBounding[1] < rClick) {
+    radiiBounding[0] = radiiBounding[1];
+    radiiBounding[1] *= 2;
+    console.log(`bounding radii: ${radiiBounding}`); // DEBUG
+  }
+  return snapToNearestPoints(rClick, radiiBounding);
+}
+
 // Given a radius, return the corresponding frequency, or vice versa.
 // The physics relationship is frequency = soundspeed/2pi/radius
 function frequencyFromRadius(radius) {
@@ -196,7 +222,8 @@ function handleClick(evnt) {
   const x = pointSvg.x;
   const y = pointSvg.y;
   const r = Math.sqrt(x ** 2 + y ** 2);
-  drawNote(r);
+  const psi = Math.atan2(x, y) + Math.PI;
+  drawNote(spiralRadiusFromClickRadiusAndAngle(r, psi));
   playNote(frequencyFromRadius(r));
 }
 
