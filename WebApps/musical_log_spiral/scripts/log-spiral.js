@@ -56,12 +56,12 @@ function drawNoteLines() {
 }
 
 // Draw the logarithmic spiral representing all frequencies.
-//   r = r_0 exp(b(theta-pi/2))
+//   r = r_0 exp(b(psi-pi/2))
 // where
 //   r_0    the fundamental radius, representing the key center
 //   r      coordinate radius in SVG units, proportional the wavelength
-//   theta  counter-clockwise angle from positive y-axis (in the math
-//          convention, going up the page), with larger theta representing
+//   psi    counter-clockwise angle from positive y-axis (in the math
+//          convention, going up the page), with larger psi representing
 //          lower notes.
 //   b      rate constant forcing the spiral to double in radius
 //          every full rotation
@@ -112,10 +112,10 @@ function playNote(frequency, duration = 0.5) {
 }
 
 // Return the unique x,y pair on the spiral having radius.
-//   theta = log(r/r_0)/b + c
+//   psi = log(r/r_0)/b + c
 // where
-//   theta  counter-clockwise angle from positive y-axis (in the math
-//          convention, going up the page), with larger theta representing
+//   psi    counter-clockwise angle from positive y-axis (in the math
+//          convention, going up the page), with larger psi representing
 //          lower notes.
 //   r      coordinate radius in SVG units, proportional the wavelength
 //   r_0    the fundamental radius, representing the key center
@@ -125,8 +125,8 @@ function playNote(frequency, duration = 0.5) {
 function coordsFromRadius(radius) {
   const b = 1 / Math.LOG2E / 2 / Math.PI;
   const c = Math.PI / 2;
-  const theta = Math.log(radius / radiusFundamental) / b + c;
-  return [radius * Math.cos(theta), -radius * Math.sin(theta)]; // [x,y]
+  const psi = Math.log(radius / radiusFundamental) / b + c;
+  return [radius * Math.cos(psi), -radius * Math.sin(psi)]; // [x,y]
 }
 
 // Given a radius, return the corresponding frequency, or vice versa.
