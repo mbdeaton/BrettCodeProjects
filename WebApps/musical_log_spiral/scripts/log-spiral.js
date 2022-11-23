@@ -252,3 +252,7 @@ drawNoteLines();
 drawSpiral();
 insertNoteGroup();
 const noteGroup = document.getElementById("notes");
+
+// TODO
+// * add pi/2 to each instance of psi, the way you've coded
+//   it up, psi=theta, but it should be psi=theta+pi/2.
