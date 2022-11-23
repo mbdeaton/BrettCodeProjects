@@ -56,36 +56,23 @@ function drawNoteLines() {
 }
 
 // Draw the logarithmic spiral representing all frequencies.
-//   r = r_0 exp(b(psi-pi/2))
-// where
-//   r_0    the fundamental radius, representing the key center
-//   r      coordinate radius in SVG units, proportional the wavelength
-//   psi    counter-clockwise angle from positive y-axis (in the math
-//          convention, going up the page), with larger psi representing
-//          lower notes.
-//   b      rate constant forcing the spiral to double in radius
-//          every full rotation
-// Details on this equation in `notes/notes-log_spiral-?.png`.
 function drawSpiral() {
-  const numOctaves = 8; // how many octaves to display?
   const centsPerStep = 25; // decrease for better spiral resolution
-  const b = Math.LN2 / 2 / Math.PI;
   const centsPerOctave = 1200;
   const numSteps = (numOctaves * centsPerOctave) / centsPerStep;
   const angleStep = (2 * Math.PI * centsPerStep) / centsPerOctave;
-  const radiusStart = radiusFundamental / 2 ** numOctaves;
   let spiral = document.createElementNS(svgns, "path");
   spiral.id = "spiral";
   spiral.setAttribute("stroke", "gray");
   spiral.setAttribute("stroke-width", "0.2px");
   spiral.setAttribute("fill", "none");
 
-  const pointPairsXY = [0, -radiusStart];
+  const pointPairsXY = [0, -radiusMin];
   for (let i = 1; i < numSteps + 1; i++) {
-    const angle = i * angleStep + Math.PI / 2;
-    const radius = radiusStart * Math.exp(b * (angle - Math.PI / 2));
-    const x = radius * Math.cos(angle);
-    const y = -radius * Math.sin(angle);
+    const psi = i * angleStep + Math.PI / 2;
+    const radius = radiusFromAngle(psi);
+    const x = radius * Math.cos(psi);
+    const y = -radius * Math.sin(psi);
     pointPairsXY.push(x, y);
   }
 
@@ -109,6 +96,26 @@ function playNote(frequency, duration = 0.5) {
   oscillator.connect(audioCtx.destination);
   oscillator.start(0);
   oscillator.stop(audioCtx.currentTime + duration);
+}
+
+// Find radius at a given angle psi.
+// Angle can be any positive number, for the range n[0,2pi] the
+//   radius is from the nth loop, with the 0th loop the smallest
+//   loop of the spiral.
+// The equation is
+//   r = r_0 exp(b(psi-pi/2))
+// where
+//   r_0    the fundamental radius, representing the key center
+//   r      coordinate radius in SVG units, proportional the wavelength
+//   psi    counter-clockwise angle from positive y-axis (in the math
+//          convention, going up the page), with larger psi representing
+//          lower notes.
+//   b      rate constant forcing the spiral to double in radius
+//          every full rotation
+// Details on this equation in `notes/notes-log_spiral-?.png`.
+function radiusFromAngle(psi) {
+  const b = Math.LN2 / 2 / Math.PI;
+  return radiusMin * Math.exp(b * (psi - Math.PI / 2));
 }
 
 // Return the unique x,y pair on the spiral having radius.
@@ -199,6 +206,8 @@ const svg = document.querySelector("svg");
 const svgns = "http://www.w3.org/2000/svg";
 const scaleSvg = 100; // SVG unit size of the viewBox
 const radiusFundamental = (0.9 * scaleSvg) / 2;
+const numOctaves = 8; // how many octaves to display
+const radiusMin = radiusFundamental / 2 ** numOctaves;
 c.setAttribute(
   "viewBox",
   `${-scaleSvg / 2} ${-scaleSvg / 2} ${scaleSvg} ${scaleSvg}`
