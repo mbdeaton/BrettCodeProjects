@@ -5,8 +5,12 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color: #DDD;
+  color: #ddd;
   text-align: center;
+}
+
+p {
+  padding: 10px;
 }
 
 h1 {
