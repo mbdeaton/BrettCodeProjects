@@ -151,13 +151,11 @@ function snapToNearestPoints(x, [xLow, xHigh]) {
 //   spiral radii having exactly that angle (r_1, r_2, r_3, ...),
 //   then return the spiral radius r_n that minimizes |rClick-r_n|.
 function spiralRadiusFromClickRadiusAndAngle(rClick, psi) {
-  console.log(`rclick: ${rClick}`); // DEBUG
   const radiusMinAtThisAngle = radiusFromAngle(psi + Math.PI / 2);
   const radiiBounding = [radiusMinAtThisAngle, radiusMinAtThisAngle * 2];
   while (radiiBounding[1] < rClick) {
     radiiBounding[0] = radiiBounding[1];
     radiiBounding[1] *= 2;
-    console.log(`bounding radii: ${radiiBounding}`); // DEBUG
   }
   return snapToNearestPoints(rClick, radiiBounding);
 }
@@ -191,12 +189,9 @@ function getDomMatrix() {
   // get translation
   const translateX = rectCanvas.x;
   const translateY = rectCanvas.y;
-  // console.log(`translation vector: (${translateX}, ${translateY})`); // DEBUG
 
   // get scale
   const scale = scaleSvg / rectCanvas.width;
-  // console.log(`width: ${rectCanvas.width}`); // DEBUG
-  // console.log(`scale: ${scale}`); // DEBUG
 
   // create matrix
   // matrix components: https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/DOMMatrix
@@ -215,9 +210,7 @@ function getDomMatrix() {
 function handleClick(evnt) {
   const matrix = getDomMatrix();
   const point = new DOMPoint(evnt.clientX, evnt.clientY);
-  // console.log(`point: ${point.x} ${point.y}`); // DEBUG
   const pointSvg = point.matrixTransform(matrix);
-  // console.log(`pointSvg: ${pointSvg.x} ${pointSvg.y}`); // DEBUG
 
   const x = pointSvg.x;
   const y = pointSvg.y;
