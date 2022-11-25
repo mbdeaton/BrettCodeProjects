@@ -212,11 +212,12 @@ function handleClick(evnt) {
   const point = new DOMPoint(evnt.clientX, evnt.clientY);
   const pointSvg = point.matrixTransform(matrix);
 
-  const x = pointSvg.x;
-  const y = pointSvg.y;
-  const r = Math.sqrt(x ** 2 + y ** 2);
-  const psi = Math.atan2(x, y) + Math.PI;
-  drawNote(spiralRadiusFromClickRadiusAndAngle(r, psi));
+  const xClick = pointSvg.x;
+  const yClick = pointSvg.y;
+  const rClick = Math.sqrt(xClick ** 2 + yClick ** 2);
+  const psi = Math.atan2(xClick, yClick) + Math.PI;
+  const r = spiralRadiusFromClickRadiusAndAngle(rClick, psi);
+  drawNote(r);
   playNote(frequencyFromRadius(r));
 }
 
