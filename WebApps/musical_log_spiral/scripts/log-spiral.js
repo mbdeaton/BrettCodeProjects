@@ -215,7 +215,12 @@ function handleClick(evnt) {
   const xClick = pointSvg.x;
   const yClick = pointSvg.y;
   const rClick = Math.sqrt(xClick ** 2 + yClick ** 2);
-  const psi = Math.atan2(xClick, yClick) + Math.PI;
+  let psi = Math.atan2(xClick, yClick) + Math.PI;
+  if (document.querySelector("input[name=tuning]:checked").value === "equal") {
+    const angleStep = (2 * Math.PI) / 12;
+    const psiGridMin = Math.floor(psi / angleStep) * angleStep;
+    psi = snapToNearestPoints(psi, [psiGridMin, psiGridMin + angleStep]);
+  }
   const r = spiralRadiusFromClickRadiusAndAngle(rClick, psi);
   drawNote(r);
   playNote(frequencyFromRadius(r));
