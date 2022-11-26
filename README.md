@@ -17,7 +17,7 @@ Solutions to problems from the
 [Daily Coding Problem](https://www.dailycodingproblem.com) email list.
 
 __WebApps__.
-Self-learning JavaScript projects (Fall 2021 ff).
+Self-learning JavaScript/React projects (Fall 2021 ff).
 
 __Jupyter__.
 Personal Jupyter notebooks (2020 ff).
