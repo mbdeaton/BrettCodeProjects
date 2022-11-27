@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Oct 2021
 """Daily Coding Problem 3.
 
 Transform a binary tree back and forth from a serial string representation.

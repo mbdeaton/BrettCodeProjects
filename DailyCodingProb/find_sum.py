@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Oct 2021
 """Daily Coding Problem 1.
 
 Given a list of numbers and a number k, return whether two numbers in the list

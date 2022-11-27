@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Oct 2021
 """Daily Coding Problem 4.
 
 Given a list of integers, find the smallest whole number missing from the list.

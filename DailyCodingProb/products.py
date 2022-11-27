@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Oct 2021
 """Daily Coding Problem 2.
 
 Given a list of integers, return a new list such that the i-th element is

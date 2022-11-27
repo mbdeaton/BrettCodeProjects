@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+# Brett Deaton - Fall 2019
 """Sum the multiples of 3 or 5 less than some upper bound.
 
 This script implements a brute force solution to Project Euler Problem 1.
 """
+
 
 __author__ = "Brett Deaton"
 

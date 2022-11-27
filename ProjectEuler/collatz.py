@@ -1,17 +1,20 @@
 #!/usr/bin/env python
+# Brett Deaton - Feb 2019
 """Euler Project Problem 14.
+
 Find the input in range that generates the longest Collatz sequence.
 Given a natural number n, the next term in the sequence is
   n/2    n even
   3n+1   n odd
 """
+
 import argparse
 import math
 import numpy as np
 import sys
 
 class CollatzFunction:
-    r"""Collatz Function T(1;n).
+    """Collatz Function T(1;n).
 
     T(k;n) = k applications of { n/2    n even
                                { 3n+1   n odd
@@ -35,7 +38,7 @@ class CollatzFunction:
         return self.n
 
 def CollatzSequence(n):
-    r"""Collatz sequence starting with input n, ending with 1."""
+    """Collatz sequence starting with input n, ending with 1."""
     seq = [n]
     func = iter( CollatzFunction(n) )
     # Only compute next term if last term isn't a power of 2.

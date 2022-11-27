@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Dec 2021
 """Daily Coding Problem 38.
 
 Count the number of unique configurations of n nonattacking queens on an n*n

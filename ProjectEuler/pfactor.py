@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+# Brett Deaton - Fall 2019
 """Find the prime factorization of a number.
 
 This module implements a recursive solution to Project Euler Problem 3.
 """
+
 
 __author__ = "Brett Deaton"
 

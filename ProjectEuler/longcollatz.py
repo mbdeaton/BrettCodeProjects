@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Fall 2019
 """Find the input in range that generates the longest Collatz sequence.
 
 Given a natural number n, the next term in the collatz sequence is
@@ -16,19 +17,19 @@ import numpy as np
 import sys
 
 class CollatzFunction:
-    r"""Collatz Function T(k;n).
+    """Collatz Function T(k;n).
 
     T(k;n) = k applications { n/2    n even
                             { 3n+1   n odd
     """
     def __init__(self, k):
-        r"""Set number of iterations, k"""
+        """Set number of iterations, k"""
         if k<1 or not isinstance(k,int):
             sys.exit("Error: k must be a positive integer.")
         else: 
             self.k=k
     def next(self, n):
-        r"""Return next number in the sequence"""
+        """Return next number in the sequence"""
         if n%2:
             next = 3*n+1
         else:
@@ -36,7 +37,7 @@ class CollatzFunction:
         return next
 
 def CollatzSequence(n):
-    r"""Collatz sequence starting with input n, ending with 1."""
+    """Collatz sequence starting with input n, ending with 1."""
     seq = [n]
     func = CollatzFunction(k=1)
     # only compute next term if last term isn't a power of 2

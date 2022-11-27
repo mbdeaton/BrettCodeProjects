@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Nov 2021
 """Daily Coding Problem 5.
 
 Given the following implementation of a pair constructor cons(), extract the

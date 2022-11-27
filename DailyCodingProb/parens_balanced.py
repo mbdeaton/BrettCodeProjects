@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Mar 2022
 """Daily Coding Problem 142.
  
 Given a string consisting solely of (, ), and *, determine whether the

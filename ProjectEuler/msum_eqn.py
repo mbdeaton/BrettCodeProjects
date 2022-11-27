@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Fall 2019
 """Compute the sum of multiples of A and B less than N.
 
 The total sum is the sum of multiples of A, plus those of B, less those of AB:
@@ -8,6 +9,7 @@ where
 
 This module implements a closed-form solution to Project Euler Problem 1.
 """
+
 
 __author__ = "Brett Deaton"
 

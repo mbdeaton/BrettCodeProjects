@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Fall 2019
 """Find the sum of the even fibonacci terms less than or equal to 4 million.
 
 Our fibonacci terms a_n are

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Brett Deaton - Nov 2021
 """Daily Coding Problem 6.
 
 Implement a doubly-linked list, storing only a single address,

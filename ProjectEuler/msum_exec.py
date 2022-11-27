@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
+# Brett Deaton - Fall 2019
 """Executable wrapper for solution to Project Euler Problem 1."""
+
 
 __author__ = "Brett Deaton"
 
