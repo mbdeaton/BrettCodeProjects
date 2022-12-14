@@ -23,3 +23,7 @@ body {
   font-family: var(--font-fam-body);
   background-color: var(--color-main);
 }
+
+.main {
+  margin: 12px;
+}
