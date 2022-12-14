@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Roboto:wght@100&display=swap");
+
+:root {
+  --font-fam-title: "Roboto", sans-serif;
+  --font-fam-body: "Nanum Pen Script", cursive;
+  --color-main: #9ab;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-fam-title);
+}
+
+body {
+  font-family: var(--font-fam-body);
+  background-color: var(--color-main);
+}
