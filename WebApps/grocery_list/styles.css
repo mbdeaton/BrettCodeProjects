@@ -4,6 +4,8 @@
   --font-fam-title: "Roboto", sans-serif;
   --font-fam-body: "Nanum Pen Script", cursive;
   --color-main: #9ab;
+  --color-background: #fff8;
+  --width-main-list: 190px;
 }
 
 * {
@@ -12,18 +14,29 @@
   box-sizing: border-box;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-fam-title);
-}
-
 body {
-  font-family: var(--font-fam-body);
+  font-family: var(--font-fam-title);
   background-color: var(--color-main);
 }
 
-.main {
+.main-list input {
+  width: var(--width-main-list);
+}
+
+.main-list ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: var(--width-main-list);
+}
+
+.main-list li {
+  font-family: var(--font-fam-body);
+  margin: 0 10px;
+  padding: 0 2px;
+  background-color: var(--color-background);
+}
+
+.main-list {
   margin: 12px;
 }

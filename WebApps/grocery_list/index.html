@@ -14,24 +14,39 @@
     <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
     <script type="text/babel">
-      function List({ items, ...otherProps }) {
+      function GroceryList() {
+        const [inputList, setInputList] = React.useState([
+          "apples",
+          "oranges",
+          "bananas",
+        ]);
+        function handleSubmit(event) {
+          event.preventDefault();
+          setInputList([...inputList, event.target.elements.shopItem.value]);
+          event.target.reset();
+        }
         return (
-          <ul {...otherProps}>
-            {items.map((x, index) => (
-              <li key={index}>{x}</li>
-            ))}
-          </ul>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              id="shop-item"
+              name="shopItem"
+              placeholder="add items"
+            />
+            <ul>
+              {inputList.map((x, index) => (
+                <li key={index}>{x}</li>
+              ))}
+            </ul>
+          </form>
         );
       }
 
-      const deatonList = ["apples", "oranges", "bananas"];
-
       const app = (
-        <div className="main">
+        <div className="main-list">
           <h1>Grocery List</h1>
-          <h4>Deaton shopping list for Dec 2022</h4>
-          <input type="text"></input>
-          <List items={deatonList}></List>
+          <h4>Deaton shopping Dec 2022</h4>
+          <GroceryList />
         </div>
       );
 
