@@ -2,10 +2,12 @@
 
 :root {
   --font-fam-title: "Roboto", sans-serif;
-  --font-fam-body: "Nanum Pen Script", cursive;
+  --font-fam-list-items: "Nanum Pen Script", cursive;
   --color-main: #9ab;
-  --color-background: #fff8;
-  --width-main-list: 190px;
+  --color-button: #fff8;
+  --width-container-main: 14rem;
+  --border-radius-buttons: 0.2rem;
+  --gap-size: 0.5rem;
 }
 
 * {
@@ -19,24 +21,39 @@ body {
   background-color: var(--color-main);
 }
 
-.main-list input {
-  width: var(--width-main-list);
+.container-main {
+  width: var(--width-container-main);
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-.main-list ul {
+.container-main form {
+  padding-top: var(--gap-size);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-size);
+  font-family: var(--font-fam-list-items);
+}
+
+.container-main input {
+  font-family: inherit;
+  padding: 0 var(--gap-size);
+  border-radius: var(--border-radius-buttons);
+  border: 0;
+  outline: 0;
+  font-size: 1rem;
+}
+
+.container-main ul {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  width: var(--width-main-list);
+  gap: var(--gap-size);
 }
 
-.main-list li {
-  font-family: var(--font-fam-body);
-  margin: 0 10px;
-  padding: 0 2px;
-  background-color: var(--color-background);
-}
-
-.main-list {
-  margin: 12px;
+.container-main li {
+  background-color: var(--color-button);
+  text-align: center;
+  padding: 0 var(--gap-size);
+  border-radius: var(--border-radius-buttons);
 }
