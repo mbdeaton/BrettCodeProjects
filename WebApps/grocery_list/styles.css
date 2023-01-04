@@ -6,7 +6,7 @@
   --color-main: #9ab;
   --color-button: #fff8;
   --color-button-hover: #fff5;
-  --width-container-main: 14rem;
+  --width-container-main: 16rem;
   --border-radius-buttons: 0.2rem;
   --gap-size: 0.5rem;
 }
@@ -26,6 +26,10 @@ body {
   width: var(--width-container-main);
   margin: 0 auto;
   padding: 1rem;
+}
+
+.container-main h1 {
+  text-align: center;
 }
 
 .container-main form {
