@@ -1,11 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Roboto:wght@100&display=swap");
 
 :root {
-  --font-fam-title: "Roboto", sans-serif;
-  --font-fam-list-items: "Nanum Pen Script", cursive;
+  --font-fam-ui: "Roboto", sans-serif;
+  --font-fam-shop-list: "Nanum Pen Script", cursive;
   --color-main: #9ab;
-  --color-button: #fff8;
-  --color-button-hover: #fff5;
+  --color-item: #fff8;
+  --color-item-hover: #fff5;
+  --color-button: #bbb8;
+  --color-button-hover: #bbb5;
+  --color-button-focus: #bbb;
+  --color-button-shadow: rgba(0, 0, 0, 0.18);
+  --color-button-text: #333;
   --width-container-main: 16rem;
   --border-radius-buttons: 0.2rem;
   --gap-size: 0.5rem;
@@ -18,11 +23,11 @@
 }
 
 body {
-  font-family: var(--font-fam-title);
   background-color: var(--color-main);
 }
 
 .container-main {
+  font-family: var(--font-fam-ui);
   width: var(--width-container-main);
   margin: 0 auto;
   padding: 1rem;
@@ -37,11 +42,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--gap-size);
-  font-family: var(--font-fam-list-items);
 }
 
 .container-main input {
-  font-family: inherit;
+  font-family: var(--font-fam-shop-list);
   padding: 0 var(--gap-size);
   border-radius: var(--border-radius-buttons);
   border: 0;
@@ -50,6 +54,7 @@ body {
 }
 
 .container-main ul {
+  font-family: var(--font-fam-shop-list);
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
@@ -57,12 +62,45 @@ body {
 }
 
 .container-main li {
-  background-color: var(--color-button);
+  background-color: var(--color-item);
   text-align: center;
   padding: 0 var(--gap-size);
   border-radius: var(--border-radius-buttons);
 }
 
 .container-main li:hover {
-  background-color: var(--color-button-hover)
+  background-color: var(--color-item-hover);
+}
+
+.container-main .button-box {
+  align-self: flex-end;
+  display: flex;
+  gap: var(--gap-size);
+}
+
+.buttons {
+  border-radius: var(--border-radius-buttons);
+  background-color: var(--color-button);
+  border: none;
+  box-shadow: 0 3px 5px var(--color-button-shadow);
+  width: 4rem;
+  font-size: 0.6rem;
+  padding: 0.25rem;
+  border-radius: var(--border-radius-buttons);
+  color: var(--color-button-text);
+  cursor: pointer;
+}
+
+.buttons:hover {
+  background-color: var(--color-button-hover);
+}
+
+.buttons:active {
+  background-color: var(--color-button-focus);
+}
+
+#list-to-copy {
+  background-color: white;
+  border-radius: var(--border-radius-buttons);
+  padding: 0 var(--gap-size);
 }
