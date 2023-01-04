@@ -18,8 +18,13 @@
         const [inputList, setInputList] = React.useState([]);
         function handleSubmit(event) {
           event.preventDefault();
-          setInputList([...inputList, event.target.elements.shopItem.value]);
+          const inputArray = event.target.elements.shopItem.value
+            .split(",") // allow multi-entry
+            .map((x) => x.trim()); // remove bounding whitespace
+          console.log(inputArray);
+          setInputList([...inputList, ...inputArray]);
           event.target.reset();
+          console.log(inputList);
         }
         return (
           <form onSubmit={handleSubmit}>
