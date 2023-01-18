@@ -16,20 +16,20 @@
     <script type="text/babel">
       function GroceryList() {
         const [listToCopy, setListToCopy] = React.useState(null);
-        const [inputList, setInputList] = React.useState([]);
+        const [shopList, setshopList] = React.useState([]);
         function handleSubmit(event) {
           event.preventDefault();
           const inputArray = event.target.elements.shopItem.value
             .split(",") // allow multi-entry
             .map((x) => x.trim()); // remove bounding whitespace
           console.log(inputArray);
-          setInputList([...inputList, ...inputArray]);
+          setshopList([...shopList, ...inputArray]);
           event.target.reset();
-          console.log(inputList);
+          console.log(shopList);
         }
         function handlePrint() {
           if (listToCopy === null) {
-            setListToCopy(inputList.join(", "));
+            setListToCopy(shopList.join(", "));
           } else {
             setListToCopy(null);
           }
@@ -37,7 +37,7 @@
         return (
           <form onSubmit={handleSubmit}>
             <ul>
-              {inputList.map((x, index) => (
+              {shopList.map((x, index) => (
                 <li key={index}>{x}</li>
               ))}
             </ul>
