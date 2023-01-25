@@ -24,13 +24,20 @@
             .split(",") // allow multi-entry
             .map((x) => x.trim()) // remove bounding whitespace
             .filter((x) => Boolean(x)); // prune empty strings
+          const shopListVals = shopList.map((x) => x.value); // nix duplicates
+          inputArray = inputArray.filter((x) => !shopListVals.includes(x));
+          inputArray = inputArray.map((x) => ({
+            id: x,
+            value: x,
+            visible: true,
+          }));
           setshopList([...shopList, ...inputArray]);
           event.target.reset();
         }
 
         function handlePrint() {
           if (listToCopy === null) {
-            setListToCopy(shopList.join(", "));
+            setListToCopy(shopList.map((x) => x.value).join(", "));
           } else {
             setListToCopy(null);
           }
@@ -39,8 +46,8 @@
         return (
           <form onSubmit={handleSubmit}>
             <ul>
-              {shopList.map((x, index) => (
-                <li key={index}>{x}</li>
+              {shopList.map((x) => (
+                <li key={x.id}>{x.value}</li>
               ))}
             </ul>
             <input type="text" id="shop-item" name="shopItem" placeholder="+" />
