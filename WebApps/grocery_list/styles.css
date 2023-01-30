@@ -86,7 +86,6 @@ body {
   width: 4rem;
   font-size: 0.6rem;
   padding: 0.25rem;
-  border-radius: var(--border-radius-buttons);
   color: var(--color-button-text);
   cursor: pointer;
 }
