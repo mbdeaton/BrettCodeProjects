@@ -87,15 +87,14 @@ function insertNoteGroup() {
   svg.appendChild(noteGroup);
 }
 
-// Play a note of given frequency (Hz) and duration (s).
-function playNote(frequency, duration = 0.5) {
+// Play a note of given frequency (Hz).
+function playNote(frequency) {
   // create Oscillator node
   const oscillator = audioCtx.createOscillator();
-
+  oscillator.type = "sine";
   oscillator.frequency.value = frequency;
-  oscillator.connect(audioCtx.destination);
-  oscillator.start(0);
-  oscillator.stop(audioCtx.currentTime + duration);
+  oscillator.connect(gainNode);
+  oscillator.start();
 }
 
 // Find radius at a given angle psi.
@@ -226,6 +225,14 @@ function handleClick(evnt) {
   playNote(frequencyFromRadius(r));
 }
 
+function toggleSound() {
+  const [oldVol, newVol] = isOn ? [maxVol, minVol] : [minVol, maxVol];
+  const now = audioCtx.currentTime;
+  gainNode.gain.setValueAtTime(oldVol, now);
+  gainNode.gain.exponentialRampToValueAtTime(newVol, now + 0.06);
+  isOn = !isOn;
+}
+
 // Main driver
 const c = document.getElementById("spiral-canvas");
 const svg = document.querySelector("svg");
@@ -238,8 +245,16 @@ c.setAttribute(
   "viewBox",
   `${-scaleSvg / 2} ${-scaleSvg / 2} ${scaleSvg} ${scaleSvg}`
 );
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 svg.addEventListener("click", handleClick);
+
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const gainNode = audioCtx.createGain();
+const maxVol = 0.1;
+const minVol = 1e-16;
+gainNode.gain.value = minVol;
+gainNode.connect(audioCtx.destination);
+let isOn = false;
+document.getElementById("sound-toggle").addEventListener("click", toggleSound);
 
 // Set scale between lengths and frequencies
 const frequencyC4 = 261.626; // middle C, i.e. C4

@@ -24,6 +24,18 @@ h1 {
   margin: auto auto;
 }
 
+button {
+  border-radius: 5px;
+  background-color: whitesmoke;
+  border: none;
+  box-shadow: 0 3px 5px var(--color-button-shadow);
+  width: 400px;
+  font-size: 1rem;
+  padding: 10px;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
 svg#spiral-canvas {
   background: whitesmoke;
   margin: 20px;
