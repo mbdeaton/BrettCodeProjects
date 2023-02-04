@@ -254,7 +254,7 @@ const minVol = 1e-16;
 gainNode.gain.value = minVol;
 gainNode.connect(audioCtx.destination);
 let isOn = false;
-document.getElementById("sound-toggle").addEventListener("click", toggleSound);
+document.getElementById("play").addEventListener("change", toggleSound);
 
 // Set scale between lengths and frequencies
 const frequencyC4 = 261.626; // middle C, i.e. C4

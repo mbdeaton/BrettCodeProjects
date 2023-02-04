@@ -5,25 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tone Spiral</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="styles/styles.css" />
     <script src="scripts/log-spiral.js" defer></script>
   </head>
 
   <body>
-    <h1>Tone Spiral</h1>
+    <div class="app-bar">
+      <img src="images/logo-spiral.svg" alt="calligraphic spiral" />
+      <h1>Tone Spiral</h1>
+      <h5>A geometry of notes and chords</h5>
+    </div>
     <div id="main-screen">
-      <p>A geometric representation of notes.</p>
-
       <div class="button-box">
-        Tuning:
+        <div class="temperament-box">
+          <div class="selector-box">
+            <input type="radio" name="tuning" value="free" id="free" />
+            <label for="none">free</label>
+          </div>
 
-        <input type="radio" name="tuning" value="none" id="none" checked />
-        <label for="none">none</label>
+          <div class="selector-box">
+            <input
+              type="radio"
+              name="tuning"
+              value="equal"
+              id="equal"
+              checked
+            />
+            <label for="equal">equal</label>
+          </div>
+        </div>
 
-        <input type="radio" name="tuning" value="equal" id="equal" />
-        <label for="equal">equal</label>
+        <div class="selector-box">
+          <input type="checkbox" name="play" value="play" id="play" />
+          <label for="play">play</label>
+        </div>
       </div>
-      <button id="sound-toggle">Play Tones</button>
 
       <svg xmlns="http://www.w3.org/2000/svg" id="spiral-canvas"></svg>
     </div>
