@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Station Table</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
@@ -17,6 +18,11 @@
         </thead>
         <tbody></tbody>
       </table>
+      <form id="new-row-form">
+        <input id="stationLabel" type="text" placeholder="station label" />
+        <input id="pcHostname" type="text" placeholder="pc hostname" />
+        <button>+</button>
+      </form>
     </div>
 
     <script>
@@ -35,6 +41,18 @@
         return { label, hostname };
       }
 
+      function userCreateRow(event) {
+        event.preventDefault();
+        createRow(
+          station(
+            event.target.elements.stationLabel.value,
+            event.target.elements.pcHostname.value
+          )
+        );
+        const form = document.getElementById("new-row-form");
+        form.reset();
+      }
+
       const tableInit = [
         station("EA_STA_100", "MFGPC0"),
         station("EA_STA_101", "MFGPC1"),
@@ -42,6 +60,9 @@
       ];
 
       tableInit.map((x) => createRow(x));
+      document
+        .getElementsByTagName("form")[0]
+        .addEventListener("submit", userCreateRow);
     </script>
   </body>
 </html>
