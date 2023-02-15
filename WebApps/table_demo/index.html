@@ -17,12 +17,22 @@
           </tr>
         </thead>
         <tbody></tbody>
+        <tfoot>
+          <tr>
+            <form id="new-row-form">
+              <td>
+                <input id="stationLabel" type="text" placeholder="label" />
+              </td>
+              <td>
+                <input id="pcHostname" type="text" placeholder="hostname" />
+              </td>
+              <td>
+                <button>+</button>
+              </td>
+            </form>
+          </tr>
+        </tfoot>
       </table>
-      <form id="new-row-form">
-        <input id="stationLabel" type="text" placeholder="station label" />
-        <input id="pcHostname" type="text" placeholder="pc hostname" />
-        <button>+</button>
-      </form>
     </div>
 
     <script>
