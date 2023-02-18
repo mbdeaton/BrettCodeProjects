@@ -1,0 +1,29 @@
+.app-bar {
+  background-color: var(--color-sel_blue);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-bar .app-name {
+  font: var(--font-strong);
+  color: var(--color-constant_white);
+  flex: 1;
+}
+
+.app-bar .logo {
+  height: 18px;
+  margin: auto 12px;
+}
+
+.app-bar svg {
+  width: 24px;
+  height: 24px;
+  margin: auto 8px;
+  fill: white;
+}
+
+.app-bar .avatar {
+  height: 100%;
+}

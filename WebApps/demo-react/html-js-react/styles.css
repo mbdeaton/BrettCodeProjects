@@ -7,8 +7,13 @@ table {
   border-collapse: collapse;
 }
 
+table th {
+  text-align: left;
+  padding: 8px;
+}
+
 table td {
-  padding: 10px;
+  padding: 8px;
 }
 
 tr:nth-child(even) {

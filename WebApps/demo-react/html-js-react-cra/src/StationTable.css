@@ -1,0 +1,21 @@
+table {
+  margin: 20px 0;
+  border-collapse: collapse;
+}
+
+table th {
+  text-align: left;
+  padding: 12px;
+}
+
+table td {
+  padding: 12px;
+}
+
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+.submit-btn {
+  padding: 0 4px;
+}

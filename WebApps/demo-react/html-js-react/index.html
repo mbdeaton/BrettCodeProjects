@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Station Table</title>
+  <link rel="stylesheet" href="styles.css">
+  <script crossorigin src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function station(label, hostname) {
+      return { label, hostname };
+    }
+
+    function StationTable() {
+      const labelRef = React.useRef()
+      const hostnameRef = React.useRef()
+      const [stationList, setStationList] = React.useState([
+        station("EA_STA_100", "MFGPC0"),
+        station("EA_STA_101", "MFGPC1"),
+        station("EA_STA_102", "MFGPC2"),
+      ])
+
+      function handleSubmit(event) {
+        event.preventDefault();
+        setStationList([...stationList, station(labelRef.current.value, hostnameRef.current.value)])
+        event.target.reset();
+      }
+
+      return (
+        <>
+          <form id="new-row-form" onSubmit={handleSubmit}></form>
+          <table>
+            <thead>
+              <tr>
+                <th>Station Label</th>
+                <th>PC Hostname</th>
+              </tr>
+            </thead>
+            <tbody>
+              {stationList.map((x) => (
+                <tr key={x.label}>
+                  <td>{x.label}</td>
+                  <td>{x.hostname}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>
+                  <input id="stationLabel" type="text" placeholder="label" form="new-row-form" ref={labelRef} />
+                </td>
+                <td>
+                  <input id="pcHostname" type="text" placeholder="hostname" form="new-row-form" ref={hostnameRef} />
+                </td>
+                <td>
+                  <button type="submit" form="new-row-form">+</button>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </>
+      );
+    }
+
+    const app = (
+      <div className="container-main">
+        <h1>Test Stations</h1>
+        <StationTable />
+      </div>
+    );
+
+    ReactDOM.createRoot(document.getElementById("root")).render(app);
+  </script>
+</body>
+
+</html>

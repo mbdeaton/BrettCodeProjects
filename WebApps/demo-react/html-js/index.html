@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Station Table</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="root">
+    <h1>Test Stations</h1>
+    <form id="new-row-form"></form>
+    <table id="station-table">
+      <thead>
+        <tr>
+          <th>Station Label</th>
+          <th>PC Hostname</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot>
+        <tr>
+          <td>
+            <input id="stationLabel" type="text" placeholder="label" form="new-row-form" />
+          </td>
+          <td>
+            <input id="pcHostname" type="text" placeholder="hostname" form="new-row-form" />
+          </td>
+          <td>
+            <button form="new-row-form">+</button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <script>
+    function station(label, hostname) {
+      return { label, hostname };
+    }
+
+    const stationList = [
+      station("EA_STA_100", "MFGPC0"),
+      station("EA_STA_101", "MFGPC1"),
+      station("EA_STA_102", "MFGPC2"),
+    ];
+
+    function createRow({ label, hostname }) {
+      const tableBody = document
+        .getElementById("station-table")
+        .getElementsByTagName("tbody")[0];
+      const row = tableBody.insertRow();
+      const cellL = row.insertCell(0);
+      const cellH = row.insertCell(1);
+      cellL.innerHTML = label;
+      cellH.innerHTML = hostname;
+    }
+
+    function userCreateRow(event) {
+      event.preventDefault();
+      createRow(
+        station(
+          event.target.elements.stationLabel.value,
+          event.target.elements.pcHostname.value
+        )
+      );
+      event.target.reset();
+    }
+
+    stationList.map((x) => createRow(x));
+    document
+      .getElementsByTagName("form")[0]
+      .addEventListener("submit", userCreateRow);
+  </script>
+</body>
+
+</html>
