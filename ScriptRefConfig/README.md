@@ -2,6 +2,9 @@
 Brett Deaton - 2023 ...
 
 ## Files
+* `notes-common_commands.md`
+   A list of CLI commands I forget faster than I use.
+   
 * `extract_data-??.pl`.
    Parse emails concatenated into a single text file.
 
