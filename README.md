@@ -30,3 +30,6 @@ NeutrinoRayTracing code in the
 
 __ProjectEuler__.
 Solutions or attempts to [Project Euler](https://projecteuler.net) problems.
+
+__ScriptRefConfig__.
+Useful scripts, references, and config files.
