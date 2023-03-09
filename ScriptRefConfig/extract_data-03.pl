@@ -36,8 +36,9 @@ sub print_header {
 	"daily_unit_goal",
 	"max_potential_units",
 	);
-    for (my $i=0; $i<$#fields; $i++) {
-	say "# [$i] $fields[$i]";
+    for (my $i=0; $i<$#fields+1; $i++) {
+	my $col = $i + 1;
+	say "# [$col] $fields[$i]";
     }
 }
 
@@ -55,7 +56,7 @@ sub extract_data {
 	# strptime uses FreeBSD strftime spec
 	my $time = Time::Piece->strptime($date, "%A, %B %e, %Y %I:%M %p");
 	print $time->ymd, $sep, int($time->julian_day);
-	$chunk =~ m/Daily Results([\w\W]*)Trend Data/; # \w\W instead of . to match \n
+	$chunk =~ m/Station Usage([\s\S]*?)\n\s/; # \s\S instead of . to match \n
 	my $subchunk = $1;
 	my @data = ($subchunk =~ m/(\d+\.?\d*%?)/g);
 	say $sep, join($sep, @data);
