@@ -16,3 +16,14 @@ Brett Deaton - 2023 ...
 
 * `init.el`
    My .emacs.d/init.el config.
+
+* `plot-passing.gnu`, `linestyle_defs.gnu`
+   Gnuplot plotting scripts.
+
+   What's good: variable column numbers, weird time format in x axis.
+
+* `obf_hello_world.pl`
+   Obfuscated hello world using web-scraping.
+
+   What's good: sorting a hash by value, variable in a regex, variable array
+   slicing.
