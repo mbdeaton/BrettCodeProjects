@@ -4,6 +4,9 @@ Brett Deaton
 Compilation begun 2010, continually updated
 
 ## Python stuff
+```
+python -c "import os, sys; print(os.path.dirname(sys.executable))" # where is this executable from?
+```
 ### Pip
 ```
 pip install requests --index-url=<LOCAL PYPI MIRROR URI> # set local mirror of PyPI as source
@@ -13,6 +16,7 @@ example-venv/Scripts/activate # activate that virtual environment (precede call 
 python # once virtual environment is activated, this will reference the local python interpreter
 python -m piptools compile requirements.in # generate requirements.txt from core requirements
 python -m pip install -r requirements.txt # install the specified libraries into the virtual environment
+python -m pip install -e ./pkg # install local package pkg
 deactivate # deactivate that virtual environment
 ```
 
