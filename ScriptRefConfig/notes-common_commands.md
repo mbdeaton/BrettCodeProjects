@@ -3,6 +3,14 @@ Brett Deaton
 
 Compilation begun 2010, continually updated
 
+## NPM
+npm start # run start script defined in package.json to spin up local server
+lsof -i tcp:3000 # find the process id of the server listening to port 3000
+kill -9 PID # kill the server running with process id PID
+npm audit --production # ignore vulnerabilities from devDependencies (see
+                         create-react-app issue #11174 for context)
+
+
 ## Python stuff
 ```
 python -c "import os, sys; print(os.path.dirname(sys.executable))" # where is this executable from?
