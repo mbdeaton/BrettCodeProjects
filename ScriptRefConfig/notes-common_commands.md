@@ -186,6 +186,7 @@ git branch --set-upstream NeutrinoAnnihilation origin/user/deaton/NeutrinoAnnihi
 git commit --amend # edit the commit message of your most recent commit
 git rm # rm files from index and working tree (until re-added they are no longer going to be tracked)
 git rm --cached # rm files from the index only (until re-added they are no longer going to be tracked)
+git rebase HEAD^^; # set penultimate commit to 'edit'; git reset HEAD~; # chunk the files into separate commits; git rebase --continue # this is what you usually want to do to split the penultimate commit into separate commits
 git reset <filename> # this is what you usually want to do rather than git rm, just un-adds the file
 git reset --soft HEAD^  # undo last commit, but leave the working files as they were in the commit, and leave the index as it was just before the commit
 git reset HEAD^         # undo last commit, but leave the working files as they were in the commit, and purge the index
