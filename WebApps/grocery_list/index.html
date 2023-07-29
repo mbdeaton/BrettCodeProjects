@@ -14,6 +14,40 @@
     <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
     <script type="text/babel">
+      function useStateParams(
+        initialState,
+        paramsName,
+        serialize,
+        deserialize
+      ) {
+        function queryParamsFromUrl() {
+          const query = window.location.search;
+          const queryParams = new URLSearchParams(query);
+          return queryParams;
+        }
+
+        const queryParams = queryParamsFromUrl();
+        const existingValue = search.get(paramsName);
+        const [state, setState] = useState(
+          existingValue ? deserialize(existingValue) : initialState
+        );
+
+        // update state when browser navigates back or forward
+        useEffect(() => {
+          if (existingValue && deserialize(existingValue) !== state) {
+            setState(deserialize(existingValue));
+          }
+        }, [existingValue]);
+
+        function onChange(s) {
+          setState(s);
+          const queryParams = queryParamsFromUrl();
+          queryParams.set(paramsName, serialize(s));
+        }
+
+        return [state, onChange];
+      }
+
       function GroceryList() {
         const [listToCopy, setListToCopy] = React.useState(null);
         const [shopList, setshopList] = React.useState([]);
