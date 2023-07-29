@@ -64,14 +64,20 @@
         );
       }
 
-      const app = (
-        <div className="container-main">
-          <h1>Shopping List</h1>
-          <GroceryList />
-        </div>
-      );
+      function App() {
+        return (
+          <div className="container-main">
+            <h1>Shopping List</h1>
+            <GroceryList />
+          </div>
+        );
+      }
 
-      ReactDOM.createRoot(document.getElementById("root")).render(app);
+      ReactDOM.createRoot(document.getElementById("root")).render(
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      );
     </script>
   </body>
 </html>
