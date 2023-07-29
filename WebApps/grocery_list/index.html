@@ -27,13 +27,13 @@
         }
 
         const queryParams = queryParamsFromUrl();
-        const existingValue = search.get(paramsName);
-        const [state, setState] = useState(
+        const existingValue = queryParams.get(paramsName);
+        const [state, setState] = React.useState(
           existingValue ? deserialize(existingValue) : initialState
         );
 
         // update state when browser navigates back or forward
-        useEffect(() => {
+        React.useEffect(() => {
           if (existingValue && deserialize(existingValue) !== state) {
             setState(deserialize(existingValue));
           }
@@ -49,7 +49,18 @@
       }
 
       function GroceryList() {
-        const [shopList, setshopList] = React.useState([]);
+        function serialize(list) {
+          return encodeURIComponent(list.map((x) => x.value).join(","));
+        }
+        function deserialize(uriEncoded) {
+          return decodeURIComponent(uriEncoded).split(",");
+        }
+        const [shopList, setshopList] = useStateParams(
+          [],
+          "items",
+          serialize,
+          deserialize
+        );
 
         function handleSubmit(event) {
           event.preventDefault();
