@@ -49,7 +49,6 @@
       }
 
       function GroceryList() {
-        const [listToCopy, setListToCopy] = React.useState(null);
         const [shopList, setshopList] = React.useState([]);
 
         function handleSubmit(event) {
@@ -69,31 +68,25 @@
           event.target.reset();
         }
 
-        function handlePrint() {
-          if (listToCopy === null) {
-            setListToCopy(shopList.map((x) => x.value).join(", "));
-          } else {
-            setListToCopy(null);
-          }
+        function handleClick(event) {
+          console.log(`you clicked ${event.target.innerText}`); // DEBUG
         }
 
         return (
           <form onSubmit={handleSubmit}>
             <ul>
               {shopList.map((x) => (
-                <li key={x.id}>{x.value}</li>
+                <li key={x.id} onClick={handleClick}>
+                  {x.value}
+                </li>
               ))}
             </ul>
             <input type="text" id="shop-item" name="shopItem" placeholder="+" />
             <div className="button-box">
-              <button type="button" className="buttons" onClick={handlePrint}>
-                show list
-              </button>
               <button type="submit" className="buttons">
                 add item
               </button>
             </div>
-            <p id="list-to-copy">{listToCopy}</p>
           </form>
         );
       }
