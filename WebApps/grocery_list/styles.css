@@ -97,9 +97,3 @@ body {
 .buttons:active {
   background-color: var(--color-button-focus);
 }
-
-#list-to-copy {
-  background-color: white;
-  border-radius: var(--border-radius-buttons);
-  padding: 0 var(--gap-size);
-}
