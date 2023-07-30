@@ -54,19 +54,37 @@
           setState(s);
           const queryParams = queryParamsFromUrl();
           queryParams.set(paramsName, serialize(s));
+
+          // TODO: is this reload shortcircuiting React?
+          document.location.search = queryParams;
         }
 
         return [state, onChange];
       }
 
       function GroceryList() {
-        /** Convert array to comma-separated string and encode for URL */
+        /**
+         * Create array of shopping items
+         *
+         * @param {string[]} items - array of names to generate array of objects with
+         * @returns {Object[]} array of grocery items
+         */
+        function makeArrayOfShoppingObjects(items) {
+          return items.map((x) => ({
+            id: x,
+            value: x,
+            visible: true,
+          }));
+        }
+
+        /** Convert array of  to comma-separated string and encode for URL */
         function serialize(list) {
           return encodeURIComponent(list.map((x) => x.value).join(","));
         }
         /** Convert URL-encoded comma-separated string to array */
         function deserialize(uriEncoded) {
-          return decodeURIComponent(uriEncoded).split(",");
+          const items = decodeURIComponent(uriEncoded).split(",");
+          return makeArrayOfShoppingObjects(items);
         }
 
         const [shopList, setshopList] = useStateParams(
@@ -82,13 +100,13 @@
             .split(",") // allow multi-entry
             .map((x) => x.trim()) // remove bounding whitespace
             .filter((x) => Boolean(x)); // prune empty strings
-          const shopListVals = shopList.map((x) => x.value); // nix duplicates
+
+          // nix duplicates
+          const shopListVals = shopList.map((x) => x.value);
           inputArray = inputArray.filter((x) => !shopListVals.includes(x));
-          inputArray = inputArray.map((x) => ({
-            id: x,
-            value: x,
-            visible: true,
-          }));
+
+          // convert to array of strings to array of shopping item objects
+          inputArray = makeArrayOfShoppingObjects(inputArray);
           setshopList([...shopList, ...inputArray]);
           event.target.reset();
         }
