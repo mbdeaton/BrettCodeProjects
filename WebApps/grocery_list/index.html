@@ -10,10 +10,21 @@
 
   <body>
     <div id="root"></div>
+
     <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+
     <script type="text/babel">
+      /**
+       * Custom hook using URL search params as state
+       *
+       * @param {*} initialState - the state objet to initialize with
+       * @param {string} paramsName - the parameter label to use in the url
+       * @param {function} serialize - func converts state obj to url string
+       * @param {function} deserialize - func converts url string to state obj
+       * @returns {[state: *, onChange: function]} state handle and updater
+       */
       function useStateParams(
         initialState,
         paramsName,
@@ -49,12 +60,15 @@
       }
 
       function GroceryList() {
+        /** Convert array to comma-separated string and encode for URL */
         function serialize(list) {
           return encodeURIComponent(list.map((x) => x.value).join(","));
         }
+        /** Convert URL-encoded comma-separated string to array */
         function deserialize(uriEncoded) {
           return decodeURIComponent(uriEncoded).split(",");
         }
+
         const [shopList, setshopList] = useStateParams(
           [],
           "items",
