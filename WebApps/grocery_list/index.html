@@ -70,24 +70,58 @@
          * @returns {Object[]} array of grocery items
          */
         function makeArrayOfShoppingObjects(items) {
-          return items.map((x) => ({
-            id: x,
-            value: x,
-            visible: true,
-          }));
+          /** Strip input string of tildes and report whether free of tildes.
+           *
+           * @param {string} item - string having one of two forms "blah" or "~blah~"
+           * @returns {[string, boolean]} input string stripped of bounding tildes,
+           *     and boolean indicating whether the string was free of tildes
+           * */
+          function extractItemAndVisibility(item) {
+            if (item.includes("~")) {
+              return [item.slice(1, -1), false];
+            } else {
+              return [item, true];
+            }
+          }
+
+          return items.map((x) => {
+            const [value, visibility] = extractItemAndVisibility(x);
+            return {
+              id: value,
+              value: value,
+              visible: visibility,
+            };
+          });
         }
 
-        /** Convert array of  to comma-separated string and encode for URL */
+        /**
+         * Convert array of shopping objects to comma-separated string and encode for URL
+         *
+         * Note, objects with visible===false are converted to the markdown cross-out
+         * form of "~blah~".
+         */
         function serialize(list) {
-          return encodeURIComponent(list.map((x) => x.value).join(","));
+          const listMarkdownified = list.map((x) => {
+            if (x.visible === false) {
+              return `~${x.value}~`;
+            } else {
+              return x.value;
+            }
+          });
+          return encodeURIComponent(listMarkdownified.join(","));
         }
-        /** Convert URL-encoded comma-separated string to array */
+        /**
+         * Convert URL-encoded comma-separated string to array.
+         *
+         * Note, strings encoded with markdown cross-out syntax like "~blah~" are
+         * converted to objects with visible===false.
+         */
         function deserialize(uriEncoded) {
           const items = decodeURIComponent(uriEncoded).split(",");
           return makeArrayOfShoppingObjects(items);
         }
 
-        const [shopList, setshopList] = useStateParams(
+        const [shopList, setShopList] = useStateParams(
           [],
           "items",
           serialize,
@@ -107,19 +141,28 @@
 
           // convert to array of strings to array of shopping item objects
           inputArray = makeArrayOfShoppingObjects(inputArray);
-          setshopList([...shopList, ...inputArray]);
+          setShopList([...shopList, ...inputArray]);
           event.target.reset();
         }
 
         function handleClick(event) {
-          console.log(`you clicked ${event.target.innerText}`); // DEBUG
+          const clickedValue = event.target.innerText;
+          const indexClicked = shopList.findIndex(
+            (x) => x.value === clickedValue
+          );
+          shopList[indexClicked].visible = !shopList[indexClicked].visible;
+          setShopList(shopList);
         }
 
         return (
           <form onSubmit={handleSubmit}>
             <ul>
               {shopList.map((x) => (
-                <li key={x.id} onClick={handleClick}>
+                <li
+                  className={x.visible ? "" : "done"}
+                  key={x.id}
+                  onClick={handleClick}
+                >
                   {x.value}
                 </li>
               ))}

@@ -6,10 +6,10 @@
   --color-main: #aaa;
   --color-item: #ff9180;
   --color-item-hover: #ff918099;
-  --color-item-clicked: #ff9180bb;
-  --color-item-text: #000f;
+  --color-item-done: #ff918055;
+  --color-item-text: #000;
   --color-item-text-hover: #0009;
-  --color-item-text-clicked: #000b;
+  --color-item-text-done: #0005;
   --color-button: #5558;
   --color-button-hover: #5555;
   --color-button-focus: #555;
@@ -71,6 +71,11 @@ body {
   text-align: center;
   padding: 0 var(--gap-size);
   border-radius: var(--border-radius-buttons);
+}
+
+.container-main li.done {
+  background-color: var(--color-item-done);
+  color: var(--color-item-text-done);
 }
 
 .container-main li:hover {
