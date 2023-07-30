@@ -154,6 +154,10 @@
           setShopList(shopList);
         }
 
+        function handleClear() {
+          setShopList([]);
+        }
+
         return (
           <form onSubmit={handleSubmit}>
             <ul>
@@ -169,6 +173,9 @@
             </ul>
             <input type="text" id="shop-item" name="shopItem" placeholder="+" />
             <div className="button-box">
+              <button type="button" className="buttons" onClick={handleClear}>
+                clear
+              </button>
               <button type="submit" className="buttons">
                 add item
               </button>
