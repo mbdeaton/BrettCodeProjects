@@ -3,14 +3,18 @@
 :root {
   --font-fam-ui: "Roboto", sans-serif;
   --font-fam-shop-list: "Nanum Pen Script", cursive;
-  --color-main: #9ab;
-  --color-item: #fff8;
-  --color-item-hover: #fff5;
-  --color-button: #bbb8;
-  --color-button-hover: #bbb5;
-  --color-button-focus: #bbb;
+  --color-main: #aaa;
+  --color-item: #ff9180;
+  --color-item-hover: #ff918099;
+  --color-item-clicked: #ff9180bb;
+  --color-item-text: #000f;
+  --color-item-text-hover: #0009;
+  --color-item-text-clicked: #000b;
+  --color-button: #5558;
+  --color-button-hover: #5555;
+  --color-button-focus: #555;
   --color-button-shadow: rgba(0, 0, 0, 0.18);
-  --color-button-text: #333;
+  --color-button-text: #fff;
   --width-container-main: 16rem;
   --border-radius-buttons: 0.2rem;
   --gap-size: 0.5rem;
@@ -63,6 +67,7 @@ body {
 
 .container-main li {
   background-color: var(--color-item);
+  color: var(--color-item-text);
   text-align: center;
   padding: 0 var(--gap-size);
   border-radius: var(--border-radius-buttons);
@@ -70,6 +75,7 @@ body {
 
 .container-main li:hover {
   background-color: var(--color-item-hover);
+  color: var(--color-item-text-hover);
 }
 
 .container-main .button-box {
