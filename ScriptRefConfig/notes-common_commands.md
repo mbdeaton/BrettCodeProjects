@@ -3,12 +3,29 @@ Brett Deaton
 
 Compilation begun 2010, continually updated
 
+
+## Linux Ubuntu
+```
+CTRL + ALT + (F3-F6) # open TTY session 3, 4, 5, or 6
+CTRL + ALT + F2      # return to GUI session
+ps aux               # view processes and memory usage
+kill [PID]           # send kill signal to a problematic process
+# remote file mount
+1) $ mkdir <somename>
+2) $ sshfs -o follow_symlinks -o transform_symlinks zwicky.cacr.caltech.edu:/panfs/ds06 <somename>
+3) fusermount -u <somename> # unmount, on ubuntu
+3) umount <somename>        # unmount, on mac os, actually, this doesn't seem to work either
+```
+
+
 ## NPM
+```
 npm start # run start script defined in package.json to spin up local server
 lsof -i tcp:3000 # find the process id of the server listening to port 3000
 kill -9 PID # kill the server running with process id PID
 npm audit --production # ignore vulnerabilities from devDependencies (see
                          create-react-app issue #11174 for context)
+```
 
 
 ## Python stuff
@@ -232,11 +249,6 @@ convert -loop 0 Images/rho0phys-disk-Lev4l0*.png test.gif # convert a bunch of p
 rename old new target                 # on zwicky/shc/etc: e.g. rename Lev1- Lev1-35- Lev?-0
 rename -n 's/Lev1-/Lev1-35-/g' Lev?-0 # on hplus/fyodor: -n prevents any changes from being made, just lists what would have been changed
 find . -name '*.dSYM' -exec rm -rf "{}" \; # find and delete a bunch of dSYM debugging symbol dirs
-# remote file mount
-1) $ mkdir <somename>
-2) $ sshfs -o follow_symlinks -o transform_symlinks zwicky.cacr.caltech.edu:/panfs/ds06 <somename>
-3) fusermount -u <somename> # unmount, on ubuntu
-3) umount <somename>        # unmount, on mac os, actually, this doesn't seem to work either
 # tar
 tar -cvf pviewf.tar pviewfiles* # Be careful with tarring. If you just give one argument (and -c) you can overwrite the existing files
 tar -cvf /home/mbdeaton/scratch/MattEOSdriver.tar --exclude=*dat --exclude=*h5 * # exclude some files from the tarball
