@@ -8,8 +8,11 @@ Compilation begun 2010, continually updated
 ```
 CTRL + ALT + (F3-F6) # open TTY session 3, 4, 5, or 6
 CTRL + ALT + F2      # return to GUI session
-ps aux               # view processes and memory usage
-kill [PID]           # send kill signal to a problematic process
+top                  # inspect top memory consumers
+free -h              # memory snapshot
+ps aux --sort=%mem | head # view process details on top memory consumers
+kill -9 [PID]        # send kill signal to a problematic process
+lscpu # print CPU specs
 # remote file mount
 1) $ mkdir <somename>
 2) $ sshfs -o follow_symlinks -o transform_symlinks zwicky.cacr.caltech.edu:/panfs/ds06 <somename>
