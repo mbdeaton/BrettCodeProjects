@@ -1,5 +1,4 @@
-# A number of useful commands, specific to Windows Subsystem for Linux
-Brett Deaton
+# Useful CLI Commands
 
 Compilation begun 2010, continually updated
 
