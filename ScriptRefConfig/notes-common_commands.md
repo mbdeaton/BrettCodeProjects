@@ -12,6 +12,15 @@ free -h              # memory snapshot
 ps aux --sort=%mem | head # view process details on top memory consumers
 kill -9 [PID]        # send kill signal to a problematic process
 lscpu # print CPU specs
+
+mount | grep gvfsd                                                # find any virtual file systems mounted (e.g. Google Drive via Gnome Online Accounts)
+cd /run/user/$UID/gvfs/google-drive*                              # navigate to Google Drive mounted dir
+gio list -a "standard::display-name"                              # view display names and encoded filenames from Google Drive files
+gio list -d /run/user/$UID/gvfs/google-drive*/0ABoF6g61lxn_Uk9PVA # view metadata of Google Drive files via file path
+gio list -d google-drive://brett.deaton@gmail.com/My%20Drive      # view metadata of Google Drive files via url
+gio list [file_url] -ud # like ls
+gio open [file_url]     # opens the file from Google Drive in default app
+
 # remote file mount
 1) $ mkdir <somename>
 2) $ sshfs -o follow_symlinks -o transform_symlinks zwicky.cacr.caltech.edu:/panfs/ds06 <somename>
